@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, TouchableOpacity, Text, ScrollView, Linking } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import slide2_style from './styles';
 
 const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
   const [apiData, setApiData] = useState([]);
@@ -32,10 +31,10 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
         <View key={index}>
           <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
             <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'en' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'fr' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
             </TouchableOpacity>
           </View>
           <Image
@@ -45,18 +44,18 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
 
           <View
             style={{
-              borderRadius: 31,
+   borderRadius: 31,
               backgroundColor: '#fff',
               borderStyle: 'solid',
               borderColor: '#175ca4',
               borderWidth: 1,
               flex: 1,
               width: 312,
-              height: 252,
+              height: 265,
               position: 'absolute',
               marginLeft: 26,
               marginRight: 20,
-              marginTop: 346,
+              marginTop: 310,
               marginBottom: 134,
             }}
           >
@@ -144,6 +143,7 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
                     >
                       {item.en.blogsAndResearch.longdesc}
                     </Text>
+                    <Text style={{fontSize:20,color:'#175ca4',marginLeft:100}} onPress={()=>{Linking.openURL(item.en.blogsAndResearch.pdf)}}>Download Pdf</Text>
                   </ScrollView>
                 </View>
               ) : (
@@ -164,6 +164,7 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
                     >
                       {item.fr.blogsAndResearch.longdesc}
                     </Text>
+                    <Text style={{fontSize:20,color:'#175ca4',marginLeft:100}}onPress={()=>{Linking.openURL(item.fr.blogsAndResearch.pdf)}}>Download Pdf</Text>
                   </ScrollView>
                 </View>
               )
