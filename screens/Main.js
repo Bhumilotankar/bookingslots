@@ -86,11 +86,11 @@ export default App = () => {
         loop={false}
         dotColor='#175CA480'
         activeDotColor='#175CA4'
-        activeDotStyle={{ width: 30, bottom:'25%' }}
-        dotStyle={{bottom:'25%'}}
+        activeDotStyle={{ width: 30, bottom:'18%' }}
+        dotStyle={{bottom:'18%'}}
       >
         <View>
-          <Works/>
+          <Works language={language} onLanguageChange={saveLanguage}/>
         </View>
         <View>
           <What_Doctor_says language={language} onLanguageChange={saveLanguage} />

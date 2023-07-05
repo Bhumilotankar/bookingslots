@@ -34,22 +34,21 @@ const How_Bynocs_Work = ({ language, onLanguageChange }) => {
       {APIData.map((item, key) => {
         const bynocsData = item;
 
-       console.log(bynocsData.en.howBynocsWork.longdesc);
+        console.log(bynocsData.en.howBynocsWork.longdesc);
 
         return (
           <View key={key}>
             <ImageBackground source={{ uri: bynocsData.en.howBynocsWork.image }} style={{ width: width, height: height, flex: 1 }} />
-            <View style={slide2_style.language_view}>
-              <TouchableOpacity onPress={() => saveLanguage('english')}>
-                <Text style={slide2_style.language_text}>EN</Text>
-              </TouchableOpacity>
-              <Text style={slide2_style.language_bar}> | </Text>
-              <TouchableOpacity onPress={() => saveLanguage('french')}>
-                <Text style={slide2_style.language_text}>FR</Text>
-              </TouchableOpacity>
-            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
+            <TouchableOpacity onPress={() => saveLanguage('english')}>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => saveLanguage('french')}>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+            </TouchableOpacity>
+          </View>
             <View style={slide2_style.Content_view}>
-              {language=='french' ? (
+              {language == 'french' ? (
                 <Text style={{
                   fontSize: 22,
                   fontFamily: 'Poppins_bold',
@@ -63,7 +62,7 @@ const How_Bynocs_Work = ({ language, onLanguageChange }) => {
               )}
 
               {!showLongDesc ? (
-                language=='english' ? (
+                language == 'english' ? (
                   <Text
                     style={{
                       fontSize: 16,
@@ -92,7 +91,7 @@ const How_Bynocs_Work = ({ language, onLanguageChange }) => {
                 )
 
               ) : (
-                language=='english' ? (
+                language == 'english' ? (
                   <View style={{ flex: 1 }}>
                     <ScrollView
                       style={{
@@ -143,7 +142,15 @@ const How_Bynocs_Work = ({ language, onLanguageChange }) => {
                 />
               </View>
             </View>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Touchable_Opacity}>
+            <TouchableOpacity activeOpacity={1} style={{
+              borderRadius: 50,
+              backgroundColor: '#175ca4',
+              height: 50,
+              width: '45%',
+              position: 'absolute',
+              marginTop: height-100,
+              marginLeft: '2.5%',
+            }}>
               <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button}>

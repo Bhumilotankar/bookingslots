@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, TouchableOpacity, Text, ScrollView, Linking } from 'react-native';
+import { View, Image, TouchableOpacity, Text, ScrollView, Linking, Dimensions } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+
 const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
+const { height, width } = Dimensions.get('window');
+
   const [apiData, setApiData] = useState([]);
   const [showLongDesc, setShowLongDesc] = useState(false);
   useEffect(() => {
@@ -44,7 +47,7 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
 
           <View
             style={{
-   borderRadius: 31,
+              borderRadius: 31,
               backgroundColor: '#fff',
               borderStyle: 'solid',
               borderColor: '#175ca4',
@@ -143,7 +146,7 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
                     >
                       {item.en.blogsAndResearch.longdesc}
                     </Text>
-                    <Text style={{fontSize:20,color:'#175ca4',marginLeft:100}} onPress={()=>{Linking.openURL(item.en.blogsAndResearch.pdf)}}>Download Pdf</Text>
+                    <Text style={{ fontSize: 20, color: '#175ca4', marginLeft: 100 }} onPress={() => { Linking.openURL(item.en.blogsAndResearch.pdf) }}>Download Pdf</Text>
                   </ScrollView>
                 </View>
               ) : (
@@ -164,7 +167,7 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
                     >
                       {item.fr.blogsAndResearch.longdesc}
                     </Text>
-                    <Text style={{fontSize:20,color:'#175ca4',marginLeft:100}}onPress={()=>{Linking.openURL(item.fr.blogsAndResearch.pdf)}}>Download Pdf</Text>
+                    <Text style={{ fontSize: 20, color: '#175ca4', marginLeft: 100 }} onPress={() => { Linking.openURL(item.fr.blogsAndResearch.pdf) }}>Download Pdf</Text>
                   </ScrollView>
                 </View>
               )
@@ -181,16 +184,16 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
         </View>
       ))}
       <TouchableOpacity
-        onPress={()=>{navigation.navigate('Login')}}
+        onPress={() => { navigation.navigate('Login') }}
         activeOpacity={1}
         style={{
           borderRadius: 50,
           backgroundColor: '#175ca4',
           height: 50,
-          width: 160,
+          width: '45%',
           position: 'absolute',
-          marginTop: 640,
-          marginLeft: 17,
+          marginTop: height - 100,
+          marginLeft: '2.5%',
         }}
       >
         <Text
@@ -211,10 +214,10 @@ const BlogsAndResearch = ({ language, onLanguageChange, navigation }) => {
           borderRadius: 50,
           backgroundColor: '#175ca4',
           height: 50,
-          width: 160,
+          width: '45%',
           position: 'absolute',
-          marginTop: 640,
-          marginLeft: 197,
+          marginTop: height-100,
+          marginLeft: '50%',
         }}
       >
         <Text

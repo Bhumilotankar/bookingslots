@@ -100,11 +100,11 @@ const What_Doctor_says = ({ language, onLanguageChange }) => {
               borderWidth: 1,
               flex: 1,
               width: 312,
-              height: 265,
+              height: 275,
               position: 'absolute',
               marginLeft: 26,
               marginRight: 20,
-              marginTop: 310,
+              marginTop: 300,
               marginBottom: 134,}}>
               {language=='french' ? (
                 <Text style={{
