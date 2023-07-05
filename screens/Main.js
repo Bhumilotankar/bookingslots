@@ -5,6 +5,7 @@ import What_Doctor_says from './slides/What_Doctor_says';
 import Dummy from './slides/Dummy';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import What_Patients_Say from './slides/What_Patients_Say';
+import BlogsAndResearch from './blogsAndResearch';
 const styles = {
   slide1: {
     flex: 1,
