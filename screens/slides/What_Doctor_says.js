@@ -43,16 +43,15 @@ const What_Doctor_says = ({ language, onLanguageChange }) => {
         return (
           <View key={key}>
             <ImageBackground source={{ uri: item.en.whatDoctorsSay.backimage }} style={{ width: width, height: height, flex: 1 }} />
-            <View style={slide2_style.language_view}>
-              <TouchableOpacity onPress={() => saveLanguage('english')}>
-                <Text style={slide2_style.language_text}>EN</Text>
-              </TouchableOpacity>
-              <Text style={slide2_style.language_bar}> | </Text>
-              <TouchableOpacity onPress={() => saveLanguage('french')}>
-                <Text style={slide2_style.language_text}>FR</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{ height: 200, top: 50 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
+            <TouchableOpacity onPress={() => saveLanguage('english')}>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => saveLanguage('french')}>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+            </TouchableOpacity>
+          </View>
+            <View style={{ height: 200, top: 80 }}>
               <Swiper
                 loop={false}
                 showsButtons
@@ -94,7 +93,19 @@ const What_Doctor_says = ({ language, onLanguageChange }) => {
                 })}
               </Swiper>
             </View>
-            <View style={slide2_style.Content_view}>
+            <View style={{              borderRadius: 31,
+              backgroundColor: '#fff',
+              borderStyle: 'solid',
+              borderColor: '#175ca4',
+              borderWidth: 1,
+              flex: 1,
+              width: 312,
+              height: 265,
+              position: 'absolute',
+              marginLeft: 26,
+              marginRight: 20,
+              marginTop: 310,
+              marginBottom: 134,}}>
               {language=='french' ? (
                 <Text style={{
                   fontSize: 22,
