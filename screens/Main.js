@@ -4,7 +4,7 @@ import Swiper from 'react-native-swiper'
 import What_Doctor_says from './slides/What_Doctor_says';
 import Dummy from './slides/Dummy';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import What_Patients_Say from './slides/What_Patients_Say';
 const styles = {
   slide1: {
     flex: 1,
@@ -83,8 +83,8 @@ export default App = () => {
         loop={false}
         dotColor='#175CA480'
         activeDotColor='#175CA4'
-        activeDotStyle={{ width: 30, bottom:70 }}
-        dotStyle={{bottom:70}}
+        activeDotStyle={{ width: 30, bottom:'25%' }}
+        dotStyle={{bottom:'25%'}}
       >
         <View style={styles.slide3}>
           <Text style={styles.text}>Slider 1</Text>
@@ -93,7 +93,7 @@ export default App = () => {
           <What_Doctor_says language={language} onLanguageChange={saveLanguage} />
         </View>
         <View>
-          <Dummy language={language} onLanguageChange={saveLanguage} />
+          <What_Patients_Say language={language} onLanguageChange={saveLanguage} />
         </View>
         <View style={styles.slide3}>
           <Text style={styles.text}>Slider 4</Text>
