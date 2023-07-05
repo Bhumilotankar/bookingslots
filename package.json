@@ -14,11 +14,7 @@
     "@react-native-community/netinfo": "^9.4.1",
     "react": "18.2.0",
     "react-native": "0.72.0",
-<<<<<<< HEAD
     "react-native-splash-screen": "^3.3.0",
-=======
-    "react-native-bcrypt": "^2.4.0",
->>>>>>> 074c9b2e2f85f0ecb22da2d2adc744067575b969
     "react-native-swiper": "^1.6.0-rc.3",
     "react-native-vector-icons": "^9.2.0",
     "react-native-webview": "^13.2.2",

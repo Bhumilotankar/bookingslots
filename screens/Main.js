@@ -6,10 +6,8 @@ import Dummy from './slides/Dummy';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import What_Patients_Say from './slides/What_Patients_Say';
 import BlogsAndResearch from './slides/blogsAndResearch';
-<<<<<<< HEAD
 import Works from './slides/work';
-=======
->>>>>>> 074c9b2e2f85f0ecb22da2d2adc744067575b969
+
 const styles = {
   slide1: {
     flex: 1,
@@ -101,11 +99,7 @@ export default App = () => {
           <What_Patients_Say language={language} onLanguageChange={saveLanguage} />
         </View>
         <View>
-<<<<<<< HEAD
-          <BlogsAndResearch language={language} onLanguageChange={saveLanguage} />
-=======
           <BlogsAndResearch language={language} onLanguageChange={saveLanguage}/>
->>>>>>> 074c9b2e2f85f0ecb22da2d2adc744067575b969
         </View>
       </Swiper>
     </View>
