@@ -101,11 +101,7 @@ export default App = () => {
           <What_Patients_Say language={language} onLanguageChange={saveLanguage} />
         </View>
         <View>
-<<<<<<< HEAD
           <BlogsAndResearch language={language} onLanguageChange={saveLanguage} />
-=======
-          <BlogsAndResearch language={language} onLanguageChange={saveLanguage}/>
->>>>>>> 074c9b2e2f85f0ecb22da2d2adc744067575b969
         </View>
       </Swiper>
     </View>
