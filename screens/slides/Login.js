@@ -72,7 +72,7 @@ const Login = ({ navigation }) => {
           await AsyncStorage.setItem('loggedIn', 'true');
           setTimeout(() => {
             setIsLoading(false);
-            navigation.navigate('Home');
+            navigation.replace('Home');
           }, 1000);
         } else {
           Alert.alert('Error', 'Invalid password!');
@@ -80,7 +80,7 @@ const Login = ({ navigation }) => {
         }
 
       } else {
-        Alert.alert('Error', 'Invalid userrname!');
+        Alert.alert('Error', 'Invalid email or password!');
       }
 
     } catch (error) {

@@ -30,7 +30,7 @@ const Home = ({navigation}) => {
       fetchUsername();
     }, []);
     async function Logout(){
-      await AsyncStorage.setItem('loggedIn','false')
+      await AsyncStorage.clear()
       navigation.replace('Login')
     }
     return (

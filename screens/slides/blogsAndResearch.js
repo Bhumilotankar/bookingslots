@@ -105,7 +105,7 @@ const { height, width } = Dimensions.get('window');
                     fontSize: 16,
                     marginLeft: 15,
                     marginTop: 10,
-                    fontFamily: 'times new roman',
+                    fontFamily: 'Poppins_regular',
                     color: 'black',
                     lineHeight: 25,
                   }}
@@ -118,7 +118,7 @@ const { height, width } = Dimensions.get('window');
                     fontSize: 16,
                     marginLeft: 15,
                     marginTop: 10,
-                    fontFamily: 'times new roman',
+                    fontFamily: 'Poppins_regular',
                     color: 'black',
                     lineHeight: 22,
                   }}
@@ -139,7 +139,7 @@ const { height, width } = Dimensions.get('window');
                     <Text
                       style={{
                         fontSize: 16,
-                        fontFamily: 'times new roman',
+                        fontFamily: 'Poppins_regular',
                         color: 'black',
                         lineHeight: 25,
                       }}
@@ -160,7 +160,7 @@ const { height, width } = Dimensions.get('window');
                     <Text
                       style={{
                         fontSize: 16,
-                        fontFamily: 'times new roman',
+                        fontFamily: 'Poppins_regular',
                         color: 'black',
                         lineHeight: 22,
                       }}
@@ -210,6 +210,7 @@ const { height, width } = Dimensions.get('window');
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={1}
+        onPress={()=>navigation.navigate('Enquiry')}
         style={{
           borderRadius: 50,
           backgroundColor: '#175ca4',
