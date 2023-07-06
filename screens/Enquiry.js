@@ -140,7 +140,7 @@ const Enquiry = () => {
                                 index={index}
                                 labelHorizontal
                                 onPress={() => setGender(option.value)}
-                                labelStyle={{}}
+                                labelStyle={{color:'black'}}
                                 labelWrapStyle={{ marginRight: 20}}
                             />
                         </RadioButton>
@@ -244,7 +244,7 @@ const Enquiry = () => {
                             <Icon name="close" size={24} color="white" style={enquiry_style.closeIcon} />
                         </TouchableOpacity>
                     </View>
-                    <Calendar onDayPress={handleDateSelect} />
+                    <Calendar onDayPress={handleDateSelect}/>
                 </View>
             </Modal>
         </ScrollView>

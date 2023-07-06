@@ -7,7 +7,7 @@ import slide2_style from '../../styles/slide2';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Login from './Login';
 
-const What_Doctor_says = ({ language, onLanguageChange }) => {
+const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
   const [enable, setEnable] = useState(true);
   const [APIData, setAPIData] = useState([]);
   const [showLongDesc, setShowLongDesc] = useState(false);
@@ -29,11 +29,6 @@ const What_Doctor_says = ({ language, onLanguageChange }) => {
   const saveLanguage = (lang) => {
     onLanguageChange(lang);
   };
-
-  const Loginpage=()=>{
-    console.log("login");
-    // navigation.navigate('Login');
-  }
 
   return (
     <View style={{ height: height }}>
@@ -200,10 +195,10 @@ const What_Doctor_says = ({ language, onLanguageChange }) => {
                 />
               </View>
             </View>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Touchable_Opacity} onPress={Loginpage}>
+            <TouchableOpacity activeOpacity={1} style={slide2_style.Touchable_Opacity} onPress={()=>navigation.navigate('Login')} >
               <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button}>
+            <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button} onPress={()=>navigation.navigate('Enquiry')} >
               <Text style={slide2_style.Touchable_Text}>ENQUIRY</Text>
             </TouchableOpacity>
           </View>

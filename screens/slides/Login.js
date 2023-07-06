@@ -197,9 +197,6 @@ const Login = ({ navigation }) => {
           <View
             style={[
               loginStyles.view,
-              isLoading
-                ? { backgroundColor: '#175cA4' }
-                : { backgroundColor: '#175cA4' },
             ]}>
             {!isLoading ? (
               <Text style={loginStyles.buttonText}>Sign in</Text>

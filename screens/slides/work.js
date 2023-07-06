@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import slide2_style from '../../styles/slide2';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const How_Bynocs_Work = ({ language, onLanguageChange }) => {
+const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
   const [enable, setEnable] = useState(true);
   const [APIData, setAPIData] = useState([]);
   const [showLongDesc, setShowLongDesc] = useState(false);
@@ -150,10 +150,10 @@ const How_Bynocs_Work = ({ language, onLanguageChange }) => {
               position: 'absolute',
               marginTop: height-100,
               marginLeft: '2.5%',
-            }}>
+            }} onPress={()=>navigation.navigate('Login')} >
               <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button}>
+            <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button} onPress={()=>navigation.navigate('Enquiry')}>
               <Text style={slide2_style.Touchable_Text}>ENQUIRY</Text>
             </TouchableOpacity>
           </View>

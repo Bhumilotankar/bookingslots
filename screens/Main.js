@@ -43,8 +43,8 @@ const styles = {
   }
 }
 
-export default App = () => {
-
+export default Main = ({navigation}) => {
+  
   const swiper = useRef(null)
   const [enable, setEnable] = useState(true);
   const [language, setLanguage] = useState('english');
@@ -90,16 +90,16 @@ export default App = () => {
         dotStyle={{bottom:'18%'}}
       >
         <View>
-          <Works language={language} onLanguageChange={saveLanguage}/>
+          <Works language={language} onLanguageChange={saveLanguage} navigation={navigation}/>
         </View>
         <View>
-          <What_Doctor_says language={language} onLanguageChange={saveLanguage} />
+          <What_Doctor_says language={language} onLanguageChange={saveLanguage} navigation={navigation} />
         </View>
         <View>
-          <What_Patients_Say language={language} onLanguageChange={saveLanguage} />
+          <What_Patients_Say language={language} onLanguageChange={saveLanguage} navigation={navigation} />
         </View>
         <View>
-          <BlogsAndResearch language={language} onLanguageChange={saveLanguage}/>
+          <BlogsAndResearch language={language} onLanguageChange={saveLanguage} navigation={navigation}/>
         </View>
       </Swiper>
     </View>

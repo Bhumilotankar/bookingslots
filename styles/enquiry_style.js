@@ -18,7 +18,8 @@ const enquiry_style = StyleSheet.create({
         marginBottom: 30,
     },
     text: {
-        top: -9, marginLeft: 20, fontSize: 14, fontFamily: 'Poppins-Regular',
+        color:'#303535',
+        top: -9, marginLeft: 20, fontSize: 14, fontFamily: 'Poppins-Regular'
     },
     texttop: {
         color: '#303535',
@@ -32,7 +33,7 @@ const enquiry_style = StyleSheet.create({
         top: -13,
         color: 'black',
         fontFamily: 'Poppins-Regular',
-        fontSize: 20,
+        fontSize: 16,
         // paddingHorizontal: 12,
         // paddingVertical: 8,
         // // top:10,
@@ -41,14 +42,16 @@ const enquiry_style = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#ccc',
         paddingBottom: 2,
-        marginLeft: 20
+        marginLeft: 20,
+        marginBottom:5
     },
     input: {
         // flex: 1,
         top: -13,
         color: 'black',
         fontFamily: 'Poppins-Regular',
-        fontSize: 20,
+        fontSize: 16,
+        marginBottom:5,
         // paddingHorizontal: 12,
         // paddingVertical: 8,
         // // top:10,
@@ -87,6 +90,7 @@ const enquiry_style = StyleSheet.create({
         top: 20, marginLeft: 20, fontSize: 14, fontFamily: 'Poppins-Regular', color: 'black'
     },
     textaftercontact: {
+        color:'black',
         top: 30, marginLeft: 20, fontSize: 14, fontFamily: 'Poppins-Regular',
     },
 
@@ -94,7 +98,7 @@ const enquiry_style = StyleSheet.create({
         top: 20,
         color: 'black',
         fontFamily: 'Poppins-Regular',
-        fontSize: 20,
+        fontSize: 16,
         // paddingHorizontal: 12,
         // paddingVertical: 8,
         // // top:10,
@@ -103,6 +107,7 @@ const enquiry_style = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#ccc',
         paddingBottom: 2,
+        marginBottom:5
     },
 
     errorText: {
