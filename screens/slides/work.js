@@ -41,17 +41,17 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
             <ImageBackground source={{ uri: bynocsData.en.howBynocsWork.image }} style={{ width: width, height: height, flex: 1 }} />
             <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
             <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20, fontFamily:'Poppins-Regular'}}>English</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20, fontFamily:'Poppins-Regular'}}>French</Text>
             </TouchableOpacity>
           </View>
             <View style={slide2_style.Content_view}>
               {language == 'french' ? (
                 <Text style={{
                   fontSize: 22,
-                  fontFamily: 'Poppins_bold',
+                  fontFamily: 'Poppins-Regular',
                   color: '#175ca4',
                   fontWeight: 'bold',
                   lineHeight: 50,
@@ -65,10 +65,10 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
                 language == 'english' ? (
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 15,
                       marginLeft: 15,
                       marginTop: 10,
-                      fontFamily: 'times new roman',
+                      fontFamily: 'Poppins-Regular',
                       color: 'black',
                       lineHeight: 25,
                     }}
@@ -78,10 +78,10 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
                 ) : (
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 15,
                       marginLeft: 15,
                       marginTop: 10,
-                      fontFamily: 'times new roman',
+                      fontFamily: 'Poppins-Regular',
                       color: 'black',
                       lineHeight: 22,
                     }}
@@ -101,10 +101,10 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
                     >
                       <Text
                         style={{
-                          fontSize: 16,
-                          fontFamily: 'times new roman',
+                          fontSize: 15,
+                          fontFamily: 'Poppins-Regular',
                           color: 'black',
-                          lineHeight: 25,
+                          lineHeight: 22,
                         }}
                       >
                         {item.en.howBynocsWork.longdesc}
@@ -121,8 +121,8 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
                     >
                       <Text
                         style={{
-                          fontSize: 16,
-                          fontFamily: 'times new roman',
+                          fontSize: 15,
+                          fontFamily: 'Poppins-Regular',
                           color: 'black',
                           lineHeight: 22,
                         }}
@@ -147,9 +147,11 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
               backgroundColor: '#175ca4',
               height: 50,
               width: '45%',
+              justifyContent:'center',
+              alignItems:'center',
               position: 'absolute',
-              marginTop: height-100,
-              marginLeft: '2.5%',
+              marginTop: height - 100,
+              marginLeft: '2.5%'
             }} onPress={()=>navigation.navigate('Login')} >
               <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
             </TouchableOpacity>

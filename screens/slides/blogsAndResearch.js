@@ -34,15 +34,15 @@ const { height, width } = Dimensions.get('window');
         <View key={index}>
           <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
             <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20, fontFamily:'Poppins-Regular'}}>English</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20, fontFamily:'Poppins-Regular'}}>French</Text>
             </TouchableOpacity>
           </View>
           <Image
             source={{ uri: item.en.blogsAndResearch.backimage }}
-            style={{ width: '100%', height: 812 }}
+            style={{ width: width, height: height }}
           />
 
           <View
@@ -53,61 +53,69 @@ const { height, width } = Dimensions.get('window');
               borderColor: '#175ca4',
               borderWidth: 1,
               flex: 1,
-              width: 312,
-              height: 265,
+              // marginHorizontal:40,
+              width: width-50,
+              height: height-450,
               position: 'absolute',
-              marginLeft: 26,
-              marginRight: 20,
-              marginTop: 310,
-              marginBottom: 134,
+              alignSelf:'center',
+              // marginLeft: width-330,
+              // marginRight: 20,
+              marginTop: height-411,
+              // marginBottom: height-100,
             }}
           >
             {language === 'french' ? (
               <Text style={{
                 fontSize: 28,
-                fontFamily: 'Poppins_bold',
+                fontFamily: 'Poppins-Regular',
                 color: '#175ca4',
                 fontWeight: 'bold',
                 lineHeight: 50,
-                alignSelf: 'center'
+                alignSelf: 'center',
+                marginTop:10
               }}>{item.fr.blogsAndResearch.title}</Text>
             ) : (
               <Text style={{
                 fontSize: 28,
-                fontFamily: 'Poppins_bold',
+                fontFamily: 'Poppins-Regular',
                 color: '#175ca4',
                 fontWeight: 'bold',
                 lineHeight: 50,
-                alignSelf: 'center'
+                alignSelf: 'center',
+                marginTop:10
               }}>{item.en.blogsAndResearch.title}</Text>
             )}
             {language === 'french' ? (
               <Text style={{
-                fontSize: 18,
-                fontFamily: 'Poppins_bold',
+                fontSize: 15,
+                fontFamily: 'Poppins-Regular',
                 color: '#175ca4',
-                fontWeight: 'bold',
-                alignSelf: 'center'
+                fontWeight: '600',
+                alignSelf: 'center',
+                marginHorizontal:15
               }}>{item.fr.blogsAndResearch.contentTitle}</Text>
             ) : (
               <Text style={{
-                fontSize: 18,
-                fontFamily: 'Poppins_bold',
+                fontSize: 15,
+                fontFamily: 'Poppins-Regular',
                 color: '#175ca4',
-                fontWeight: 'bold',
-                alignSelf: 'center'
+                fontWeight: '600',
+                // alignSelf: 'center',
+                marginHorizontal:15
               }}>{item.en.blogsAndResearch.contentTitle}</Text>
             )}
             {!showLongDesc ? (
               language === 'english' ? (
                 <Text
                   style={{
-                    fontSize: 16,
-                    marginLeft: 15,
-                    marginTop: 10,
-                    fontFamily: 'times new roman',
+                    fontSize: 15,
+                    // marginLeft: 15,
+                    marginHorizontal:15,
+                    // marginTop: 10,
+                    // textAlign:'center',
+                    fontFamily: 'Poppins-Regular',
                     color: 'black',
-                    lineHeight: 25,
+                    lineHeight: 23,
                   }}
                 >
                   {item.en.blogsAndResearch.shortdesc}
@@ -115,12 +123,14 @@ const { height, width } = Dimensions.get('window');
               ) : (
                 <Text
                   style={{
-                    fontSize: 16,
-                    marginLeft: 15,
-                    marginTop: 10,
-                    fontFamily: 'times new roman',
+                    fontSize: 15,
+                    // marginLeft: 15,
+                    // marginTop: 10,
+                    marginHorizontal:15,
+
+                    fontFamily: 'Poppins-Regular',
                     color: 'black',
-                    lineHeight: 22,
+                    lineHeight: 23,
                   }}
                 >
                   {item.fr.blogsAndResearch.shortdesc}
@@ -132,16 +142,17 @@ const { height, width } = Dimensions.get('window');
                 <View style={{ flex: 1 }}>
                   <ScrollView
                     style={{
-                      marginLeft: 15,
-                      marginTop: 10,
+                      // marginLeft: 15,
+                      // marginTop: 10,
                     }}
                   >
                     <Text
                       style={{
-                        fontSize: 16,
-                        fontFamily: 'times new roman',
+                        fontSize: 15,
+                        marginHorizontal:15,
+                        fontFamily: 'Poppins-Regular',
                         color: 'black',
-                        lineHeight: 25,
+                        lineHeight: 23,
                       }}
                     >
                       {item.en.blogsAndResearch.longdesc}
@@ -153,16 +164,17 @@ const { height, width } = Dimensions.get('window');
                 <View style={{ flex: 1 }}>
                   <ScrollView
                     style={{
-                      marginLeft: 15,
-                      marginTop: 10,
+                      // marginLeft: 15,
+                      // marginTop: 10,
                     }}
                   >
                     <Text
                       style={{
-                        fontSize: 16,
-                        fontFamily: 'times new roman',
+                        fontSize: 15,
+                        marginHorizontal:15,
+                        fontFamily: 'Poppins-Regular',
                         color: 'black',
-                        lineHeight: 22,
+                        lineHeight: 23,
                       }}
                     >
                       {item.fr.blogsAndResearch.longdesc}
@@ -191,6 +203,8 @@ const { height, width } = Dimensions.get('window');
           backgroundColor: '#175ca4',
           height: 50,
           width: '45%',
+          justifyContent:'center',
+          alignItems:'center',
           position: 'absolute',
           marginTop: height - 100,
           marginLeft: '2.5%',
@@ -199,31 +213,36 @@ const { height, width } = Dimensions.get('window');
         <Text
           style={{
             fontSize: 16,
-            fontFamily: 'Inter_semibold',
+            fontFamily: 'Poppins-Regular',
             textAlign: 'center',
             color: '#fff',
             lineHeight: 45,
+            fontWeight:'600'
           }}
         >
           LOGIN
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
+      onPress={() => { navigation.navigate('Enquiry') }}
         activeOpacity={1}
         style={{
           borderRadius: 50,
           backgroundColor: '#175ca4',
           height: 50,
+          justifyContent:'center',
+          alignItems:'center',
           width: '45%',
           position: 'absolute',
           marginTop: height-100,
           marginLeft: '50%',
+          fontWeight:'600'
         }}
       >
         <Text
           style={{
             fontSize: 16,
-            fontFamily: 'Inter_semibold',
+            fontFamily: 'Poppins-Regular',
             textAlign: 'center',
             color: '#fff',
             lineHeight: 45,

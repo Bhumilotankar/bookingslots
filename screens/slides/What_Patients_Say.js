@@ -53,13 +53,15 @@ const What_Patients_says = ({ language, onLanguageChange,navigation }) => {
             />
           <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
             <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20, fontFamily:'Poppins-Regular'}}>English</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20, fontFamily:'Poppins-Regular' }}>French</Text>
             </TouchableOpacity>
           </View>
-            <View style={{height: 200, top: 80}}>
+            <View style={{
+              height: 200, top: 80
+            }}>
               <View style={slide2_style.Youtube}>
                 <YoutubePlayer
                   height={140}
@@ -71,7 +73,8 @@ const What_Patients_says = ({ language, onLanguageChange,navigation }) => {
                 />
               </View>
             </View>
-            <View style={{                 borderRadius: 31,
+            <View style={{                 
+              borderRadius: 31,
               backgroundColor: '#fff',
               borderStyle: 'solid',
               borderColor: '#175ca4',
@@ -83,11 +86,12 @@ const What_Patients_says = ({ language, onLanguageChange,navigation }) => {
               marginLeft: 26,
               marginRight: 20,
               marginTop: 310,
-              marginBottom: 134,}}>
+              marginBottom: 134,
+              }}>
               <Text
                 style={{
                   fontSize: 22,
-                  fontFamily: 'Poppins_bold',
+                  fontFamily: 'Poppins-Regular',
                   color: '#175ca4',
                   fontWeight: 'bold',
                   lineHeight: 50,
@@ -101,7 +105,7 @@ const What_Patients_says = ({ language, onLanguageChange,navigation }) => {
                   // marginLeft: 15,
                   marginTop: 10,
                   marginHorizontal: 15,
-                  fontFamily: 'times new roman',
+                  fontFamily: 'Poppins-Regular',
                   color: 'black',
                   textAlign: 'center',
                   lineHeight: 25,
@@ -133,7 +137,7 @@ const What_Patients_says = ({ language, onLanguageChange,navigation }) => {
                           }}
                           style={[{height: 55, width: 55}, selectedIndex == id ? {borderWidth:3,borderColor:'#175ca4',borderRadius:50} : null]}
                         />
-                        <Text style={{color: 'black',textAlign:'center',marginTop:10,fontWeight:'600'}}>{e.Name}</Text>
+                        <Text style={{color: 'black',textAlign:'center',marginTop:10,fontWeight:'600', fontFamily:'Poppins-Regular'}}>{e.Name}</Text>
                       </View>
                       </TouchableOpacity>
                     );

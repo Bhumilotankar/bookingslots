@@ -15,19 +15,19 @@ const slide2_style = StyleSheet.create({
         // height: '10%',
         flexDirection: 'row',
         top: '7%',
-        left: width-110
+        left: width - 110
     },
     language_bar: {
         color: '#07101A',
         fontSize: 24,
-        fontFamily: 'Poppins',
+        fontFamily: 'Poppins-Regular',
         // left: '45%',
         bottom: '0.35%'
     },
     language_text: {
         color: '#07101A',
         fontSize: 24,
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins-Regular'
     },
     Youtube: {
         alignSelf: 'center',
@@ -35,25 +35,25 @@ const slide2_style = StyleSheet.create({
         borderColor: '#175CA4',
     },
     Content_view: {
+        // flexDirection:'column',
         borderRadius: 38,
         backgroundColor: '#fff',
         borderStyle: 'solid',
         borderColor: '#175ca4',
         borderWidth: 1,
         flex: 1,
-        top:250,
+        marginTop: height-460,
         width: 305,
-        height: height-400,
+        height: height - 400,
         position: 'absolute',
         marginLeft: '7.5%',
         marginRight: '8.5%',
         //  marginTop: '1%',
-        marginBottom: '40%',
-        bottom: '2%'
+        // bottom: '2%'
     },
     Content_title: {
         fontSize: 27,
-        fontFamily: 'Poppins_bold',
+        fontFamily: 'Poppins-Regular',
         color: '#175ca4',
         fontWeight: 'bold',
         lineHeight: 50,
@@ -62,7 +62,7 @@ const slide2_style = StyleSheet.create({
     Content_shortdesc: {
         fontSize: 16,
         marginTop: 10,
-        fontFamily: 'times new roman',
+        fontFamily: 'Poppins-Regular',
         color: 'black',
         lineHeight: 25,
         textAlign: 'center',
@@ -71,7 +71,7 @@ const slide2_style = StyleSheet.create({
     Content_longdesc: {
         fontSize: 16,
         marginRight: '3.4%',
-        fontFamily: 'times new roman',
+        fontFamily: 'Poppins-Regular',
         color: 'black',
         lineHeight: 25,
         textAlign: 'center',
@@ -80,15 +80,17 @@ const slide2_style = StyleSheet.create({
     Touchable_Opacity: {
         borderRadius: 50,
         backgroundColor: '#175ca4',
-        height: '25%',
+        height: 50,
         width: '45%',
+        justifyContent: 'center',
+        alignItems: 'center',
         position: 'absolute',
         marginTop: height - 100,
-        marginLeft: '2.5%',
+        marginLeft: '2.5%'
     },
     Touchable_Text: {
         fontSize: 16,
-        fontFamily: 'Inter_semibold',
+        fontFamily: 'Poppins-Regular',
         textAlign: 'center',
         color: '#fff',
         lineHeight: 45,
@@ -97,10 +99,13 @@ const slide2_style = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: '#175ca4',
         height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
         width: '45%',
         position: 'absolute',
         marginTop: height - 100,
         marginLeft: '50%',
+        fontWeight: '600'
     }
 });
 export default slide2_style;

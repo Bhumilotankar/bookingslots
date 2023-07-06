@@ -49,6 +49,8 @@ export default Main = ({navigation}) => {
   const [enable, setEnable] = useState(true);
   const [language, setLanguage] = useState('english');
 
+  const { height, width } = Dimensions.get('window');
+
   useEffect(() => {
     retrieveLanguage();
   }, []);
@@ -86,8 +88,8 @@ export default Main = ({navigation}) => {
         loop={false}
         dotColor='#175CA480'
         activeDotColor='#175CA4'
-        activeDotStyle={{ width: 30, bottom:'18%' }}
-        dotStyle={{bottom:'18%'}}
+        activeDotStyle={{ width: 30, bottom: height-653 }}
+        dotStyle={{bottom:height-653}}
       >
         <View>
           <Works language={language} onLanguageChange={saveLanguage} navigation={navigation}/>

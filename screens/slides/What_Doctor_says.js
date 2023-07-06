@@ -40,10 +40,10 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
             <ImageBackground source={{ uri: item.en.whatDoctorsSay.backimage }} style={{ width: width, height: height, flex: 1 }} />
             <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
             <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20 }}>English</Text>
+              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20, fontFamily:'Poppins-Regular'}}>English</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20 }}>French</Text>
+              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20, fontFamily:'Poppins-Regular'}}>French</Text>
             </TouchableOpacity>
           </View>
             <View style={{ height: 200, top: 80 }}>
@@ -104,7 +104,7 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
               {language=='french' ? (
                 <Text style={{
                   fontSize: 22,
-                  fontFamily: 'Poppins_bold',
+                  fontFamily: 'Poppins-Regular',
                   color: '#175ca4',
                   fontWeight: 'bold',
                   lineHeight: 50,
@@ -121,9 +121,9 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                       fontSize: 16,
                       marginLeft: 15,
                       marginTop: 10,
-                      fontFamily: 'times new roman',
+                      fontFamily: 'Poppins-Regular',
                       color: 'black',
-                      lineHeight: 25,
+                      lineHeight: 22,
                     }}
                   >
                     {item.en.whatDoctorsSay.shortdesc}
@@ -134,7 +134,7 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                       fontSize: 16,
                       marginLeft: 15,
                       marginTop: 10,
-                      fontFamily: 'times new roman',
+                      fontFamily: 'Poppins-Regular',
                       color: 'black',
                       lineHeight: 22,
                     }}
@@ -155,7 +155,7 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                       <Text
                         style={{
                           fontSize: 16,
-                          fontFamily: 'times new roman',
+                          fontFamily: 'Poppins-Regular',
                           color: 'black',
                           lineHeight: 25,
                         }}
@@ -175,7 +175,7 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                       <Text
                         style={{
                           fontSize: 16,
-                          fontFamily: 'times new roman',
+                          fontFamily: 'Poppins-Regular',
                           color: 'black',
                           lineHeight: 22,
                         }}
