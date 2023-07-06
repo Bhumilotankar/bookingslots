@@ -107,7 +107,6 @@ const What_Patients_says = ({ language, onLanguageChange,navigation }) => {
                   marginHorizontal: 15,
                   fontFamily: 'Poppins-Regular',
                   color: 'black',
-                  textAlign: 'center',
                   lineHeight: 25,
                 }}>
                   {language=='french' ? item.fr.whatPatientsSay.desc : item.en.whatPatientsSay.desc}

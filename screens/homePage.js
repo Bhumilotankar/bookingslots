@@ -21,7 +21,6 @@ const Home = () => {
     var hours = new Date().getHours(); 
     var min = new Date().getMinutes(); 
     var sec = new Date().getSeconds();
-      var dateHelper = new DateHelpers();
     async function fetchUsername() {
       uname = await AsyncStorage.getItem('loggedIn');
       setUsername(uname);
@@ -54,14 +53,14 @@ const Home = () => {
           </View>
         </View>
   
-        <View style={{margin: 20}}>
+       {/*} <View style={{margin: 20}}>
           <Text style={{fontSize: 30, fontWeight: 'bold', color: 'black'}}>
             Welcome Back,
           </Text>
           <Text style={{fontSize: 21, color: '#295C99', marginTop: 5}}>
             {username}
           </Text>
-        </View>
+        </View>*/}
   
         <View
           style={{

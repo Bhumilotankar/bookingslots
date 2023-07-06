@@ -88,18 +88,19 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                 })}
               </Swiper>
             </View>
-            <View style={{              borderRadius: 31,
+            <View style={{                            
+              borderRadius: 31,
               backgroundColor: '#fff',
               borderStyle: 'solid',
               borderColor: '#175ca4',
               borderWidth: 1,
               flex: 1,
               width: 312,
-              height: 275,
+              height: 265,
               position: 'absolute',
               marginLeft: 26,
               marginRight: 20,
-              marginTop: 300,
+              marginTop: 310,
               marginBottom: 134,}}>
               {language=='french' ? (
                 <Text style={{
@@ -120,7 +121,6 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                     style={{
                       fontSize: 16,
                       marginLeft: 15,
-                      marginTop: 10,
                       fontFamily: 'Poppins-Regular',
                       color: 'black',
                       lineHeight: 22,
@@ -133,7 +133,6 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                     style={{
                       fontSize: 16,
                       marginLeft: 15,
-                      marginTop: 10,
                       fontFamily: 'Poppins-Regular',
                       color: 'black',
                       lineHeight: 22,
@@ -149,7 +148,6 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                     <ScrollView
                       style={{
                         marginLeft: 15,
-                        marginTop: 10,
                       }}
                     >
                       <Text
@@ -169,7 +167,6 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                     <ScrollView
                       style={{
                         marginLeft: 15,
-                        marginTop: 10,
                       }}
                     >
                       <Text
@@ -187,7 +184,7 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                 )
 
               )}
-              <View style={{ alignItems: 'center' }}>
+              <View style={{ alignItems: 'center' ,marginBottom:40}}>
                 <MaterialIcons
                   name={showLongDesc ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
                   size={34}

@@ -52,7 +52,7 @@ const slide2_style = StyleSheet.create({
         // bottom: '2%'
     },
     Content_title: {
-        fontSize: 27,
+        fontSize: 28,
         fontFamily: 'Poppins-Regular',
         color: '#175ca4',
         fontWeight: 'bold',
@@ -85,7 +85,7 @@ const slide2_style = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        marginTop: height - 100,
+        marginTop: height - 80,
         marginLeft: '2.5%'
     },
     Touchable_Text: {
@@ -103,7 +103,7 @@ const slide2_style = StyleSheet.create({
         alignItems: 'center',
         width: '45%',
         position: 'absolute',
-        marginTop: height - 100,
+        marginTop: height - 80,
         marginLeft: '50%',
         fontWeight: '600'
     }

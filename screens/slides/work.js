@@ -150,7 +150,7 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
               justifyContent:'center',
               alignItems:'center',
               position: 'absolute',
-              marginTop: height - 100,
+              marginTop: height - 80,
               marginLeft: '2.5%'
             }} onPress={()=>navigation.navigate('Login')} >
               <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
