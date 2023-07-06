@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const Home = () => {
+const Home = ({navigation}) => {
 
     function monthIndexToMonth(date){
         console.log("HELPER CLALLED");
@@ -29,6 +29,10 @@ const Home = () => {
     useEffect(() => {
       fetchUsername();
     }, []);
+    async function Logout(){
+      await AsyncStorage.setItem('loggedIn','false')
+      navigation.replace('Login')
+    }
     return (
       <View>
         
@@ -49,7 +53,9 @@ const Home = () => {
               size={23}
               style={{marginRight: 20}}
             />
+            <TouchableOpacity onPress={Logout}>
             <Icon name="user-o" color={'black'} size={23} />
+            </TouchableOpacity>
           </View>
         </View>
   
