@@ -108,7 +108,7 @@ const Login = ({ navigation }) => {
   return (
     <View>
       <View>
-        <Text style={loginStyles.text}>Register Now to Start</Text>
+        <Text style={loginStyles.text}>Login to Start</Text>
       </View>
       <Text style={loginStyles.texta}>Your Email</Text>
       <View
