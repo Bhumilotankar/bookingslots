@@ -190,7 +190,6 @@ const Login = ({ navigation }) => {
     </TouchableOpacity>
     </View >
     </View >
-  );
+  )
 };
-
 export default Login;
