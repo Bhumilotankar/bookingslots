@@ -67,10 +67,10 @@ const App = () => {
               headerShown:false
             }}/>
             <stack.Screen component={Login} name="Login" options={{
-              headerShown:false
+              headerShown:true
             }}/>
             <stack.Screen component={Enquiry} name="Enquiry" options={{
-              headerShown:false
+              headerShown:true
             }}/>
             <stack.Screen component={Home} name="Home" options={{
               headerShown:false
