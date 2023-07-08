@@ -3,12 +3,10 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import { Text, TouchableOpacity, View, ImageBackground, Dimensions, ScrollView, Alert } from 'react-native';
 import Swiper from 'react-native-swiper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import slide2_style from '../../styles/slide2';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import Login from './Login';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
+import styles from '../../styles/styles';
 
-const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
-  const [enable, setEnable] = useState(true);
+const What_Doctor_says = ({ language, onLanguageChange, navigation }) => {
   const [APIData, setAPIData] = useState([]);
   const [showLongDesc, setShowLongDesc] = useState(false);
 
@@ -38,30 +36,31 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
         return (
           <View key={key}>
             <ImageBackground source={{ uri: item.en.whatDoctorsSay.backimage }} style={{ width: width, height: height, flex: 1 }} />
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
-            <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20, fontFamily:'Poppins-Regular'}}>English</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20, fontFamily:'Poppins-Regular'}}>French</Text>
-            </TouchableOpacity>
-          </View>
-            <View style={{ height: 200, top: 80 }}>
+            <View style={{ flexDirection: 'row', marginLeft: responsiveWidth(74), position: 'absolute', top: responsiveHeight(3), width: width, zIndex: 1 }}>
+              <TouchableOpacity onPress={() => saveLanguage('english')}>
+                <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: responsiveWidth(0.6), fontSize: responsiveFontSize(3), fontFamily: 'Poppins-Regular' }}>EN</Text>
+              </TouchableOpacity>
+              <Text style={{ color: 'black', marginRight: responsiveWidth(0.6), fontSize: responsiveFontSize(3), fontFamily: 'Poppins-Regular' }}> | </Text>
+              <TouchableOpacity onPress={() => saveLanguage('french')}>
+                <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: responsiveFontSize(3), fontFamily: 'Poppins-Regular' }}>FR</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.Youtube_View}>
               <Swiper
                 loop={false}
                 showsButtons
-                nextButton={<Text style={slide2_style.buttonText}>›</Text>}
-                prevButton={<Text style={slide2_style.buttonText}>‹</Text>}
-                activeDotStyle={{ width: 30 }}
+                nextButton={<Text style={styles.Player_Button}>›</Text>}
+                prevButton={<Text style={styles.Player_Button}>‹</Text>}
+                activeDotStyle={styles.ActiveDotStyle}
                 buttonWrapperStyle={{
                   backgroundColor: 'transparent',
                   flexDirection: 'row',
                   position: 'absolute',
-                  top: -30,
+                  top: responsiveHeight(-5),
                   left: 0,
                   flex: 1,
-                  paddingHorizontal: 10,
-                  paddingVertical: 10,
+                  // paddingHorizontal: 10,
+                  // paddingVertical: 10,
                   justifyContent: 'space-between',
                   alignItems: 'center',
                 }}
@@ -74,10 +73,10 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
               >
                 {doctorsData.map((doctor, index) => {
                   return (
-                    <View key={index} style={slide2_style.Youtube}>
+                    <View key={index} style={styles.YoutubePlayer_View}>
                       <YoutubePlayer
-                        height={140}
-                        width={250}
+                        height={responsiveHeight(19.5)}
+                        width={responsiveWidth(70)}
                         videoId={doctor.link}
                         play={false}
                         volume={50}
@@ -88,75 +87,34 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                 })}
               </Swiper>
             </View>
-            <View style={{                            
-              borderRadius: 31,
-              backgroundColor: '#fff',
-              borderStyle: 'solid',
-              borderColor: '#175ca4',
-              borderWidth: 1,
-              flex: 1,
-              width: 312,
-              height: 265,
-              position: 'absolute',
-              marginLeft: 26,
-              marginRight: 20,
-              marginTop: 310,
-              marginBottom: 134,}}>
-              {language=='french' ? (
-                <Text style={{
-                  fontSize: 22,
-                  fontFamily: 'Poppins-Regular',
-                  color: '#175ca4',
-                  fontWeight: 'bold',
-                  lineHeight: 50,
-                  alignSelf: 'center'
-                }}>{item.fr.whatDoctorsSay.title}</Text>
+            <View style={styles.Doctor_Content_View}>
+              {language == 'french' ? (
+                <Text style={styles.Doctor_fr_title}>{item.fr.whatDoctorsSay.title}</Text>
               ) : (
-                <Text style={slide2_style.Content_title}>{item.en.whatDoctorsSay.title}</Text>
+                <Text style={styles.Doctor_en_title}>{item.en.whatDoctorsSay.title}</Text>
               )}
 
               {!showLongDesc ? (
-                language=='english' ? (
+                language == 'english' ? (
                   <Text
-                    style={{
-                      fontSize: 16,
-                      marginLeft: 15,
-                      fontFamily: 'Poppins-Regular',
-                      color: 'black',
-                      lineHeight: 22,
-                    }}
+                    style={styles.Doctor_en_desc}
                   >
                     {item.en.whatDoctorsSay.shortdesc}
                   </Text>
                 ) : (
                   <Text
-                    style={{
-                      fontSize: 16,
-                      marginLeft: 15,
-                      fontFamily: 'Poppins-Regular',
-                      color: 'black',
-                      lineHeight: 22,
-                    }}
+                    style={styles.Doctor_fr_desc}
                   >
                     {item.fr.whatDoctorsSay.shortdesc}
                   </Text>
                 )
 
               ) : (
-                language=='english' ? (
+                language == 'english' ? (
                   <View style={{ flex: 1 }}>
-                    <ScrollView
-                      style={{
-                        marginLeft: 15,
-                      }}
-                    >
+                    <ScrollView>
                       <Text
-                        style={{
-                          fontSize: 16,
-                          fontFamily: 'Poppins-Regular',
-                          color: 'black',
-                          lineHeight: 25,
-                        }}
+                        style={styles.Doctor_en_desc}
                       >
                         {item.en.whatDoctorsSay.longdesc}
                       </Text>
@@ -164,18 +122,9 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                   </View>
                 ) : (
                   <View style={{ flex: 1 }}>
-                    <ScrollView
-                      style={{
-                        marginLeft: 15,
-                      }}
-                    >
+                    <ScrollView>
                       <Text
-                        style={{
-                          fontSize: 16,
-                          fontFamily: 'Poppins-Regular',
-                          color: 'black',
-                          lineHeight: 22,
-                        }}
+                        style={styles.Doctor_fr_desc}
                       >
                         {item.fr.whatDoctorsSay.longdesc}
                       </Text>
@@ -184,19 +133,35 @@ const What_Doctor_says = ({ language, onLanguageChange,navigation }) => {
                 )
 
               )}
-              <View style={{ alignItems: 'center' ,marginBottom:40}}>
+              <View style={{ alignItems: 'center', marginBottom:responsiveHeight(1.5)}}>
                 <MaterialIcons
                   name={showLongDesc ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
-                  size={34}
+                  size={responsiveHeight(5)}
                   onPress={toggleDescription}
                 />
               </View>
             </View>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Touchable_Opacity} onPress={()=>navigation.navigate('Login')} >
-              <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
+            <TouchableOpacity
+              onPress={() => { navigation.replace('Login') }}
+              activeOpacity={1}
+              style={styles.Login_Button}
+            >
+              <Text
+                style={styles.Login_Button_Text}
+              >
+                LOGIN
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button} onPress={()=>navigation.navigate('Enquiry')} >
-              <Text style={slide2_style.Touchable_Text}>ENQUIRY</Text>
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={() => navigation.navigate('Enquiry')}
+              style={styles.Enquiry_Button}
+            >
+              <Text
+                style={styles.Enquiry_Button_Text}
+              >
+                ENQUIRY
+              </Text>
             </TouchableOpacity>
           </View>
         );

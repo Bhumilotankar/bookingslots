@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import loginStyles from '../../styles/login_style';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import bcrypt from 'react-native-bcrypt';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LoginErrors from '../../helper/LoginErrors';
 import NetInfo from '@react-native-community/netinfo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import styles from '../../styles/styles';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -108,31 +109,26 @@ const Login = ({ navigation }) => {
   return (
     <View>
       <View>
-        <Text style={loginStyles.text}>Register Now to Start</Text>
+        <Text style={{
+          color: '#303535',
+          fontFamily: 'Poppins-Regular',
+          fontSize: responsiveFontSize(2.5),
+          marginLeft: responsiveWidth(4.5),
+          marginTop: responsiveHeight(7),
+        }}>Register Now to Start</Text>
       </View>
-      <Text style={loginStyles.texta}>Your Email</Text>
+      <Text style={styles.Login_Parameter_Text}>Your Email</Text>
       <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          borderWidth: 1,
-          borderRadius: 10,
-          width: 330,
-          borderColor: emailError ? 'red' : '#175CA4',
-          height: 50,
-          paddingLeft: 10,
-          marginTop: 12,
-          marginLeft: 18,
-        }}>
+        style={[styles.Login_Email_View, {borderColor: emailError ? 'red' : '#175CA4'}]}>
         <MaterialIcons
           name="account-circle"
           style={{ color: 'black' }}
-          size={24}
+          size={responsiveHeight(4)}
         />
 
         <TextInput
           maxLength={25}
-          style={loginStyles.textin}
+          style={styles.Login_TextInput}
           onChangeText={text => {
             setEmail(text);
             setEmailError(false);
@@ -143,29 +139,18 @@ const Login = ({ navigation }) => {
         />
         <Octicons
           name={email ? 'check' : ''}
-          style={{ color: '#175CA4', marginRight: 17 }}
+          style={{ color: '#175CA4', marginRight: responsiveWidth(5) }}
           size={24}
         />
       </View>
-      <Text style={loginStyles.texta}>Password</Text>
+      <Text style={styles.Login_Parameter_Text}>Password</Text>
       <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          borderWidth: 1,
-          borderRadius: 10,
-          width: 330,
-          borderColor: passwordError ? 'red' : '#175CA4',
-          height: 50,
-          paddingLeft: 10,
-          marginTop: 12,
-          marginLeft: 18,
-        }}>
+        style={[styles.Login_Password_View, {borderColor: passwordError ? 'red' : '#175CA4',}]}>
         <MaterialIcons name="lock" style={{ color: 'black' }} size={24} />
 
         <TextInput
           maxLength={25}
-          style={loginStyles.textin}
+          style={styles.Login_TextInput}
           onChangeText={text => {
             setPassword(text);
             setPasswordError(false);
@@ -177,7 +162,7 @@ const Login = ({ navigation }) => {
         />
         <Octicons
           name={showPassword ? 'eye' : 'eye-closed'}
-          style={{ color: '#175CA4', marginRight: 15 }}
+          style={{ color: '#175CA4', marginRight: responsiveWidth(5) }}
           size={24}
           onPress={() => setShowPassword(!showPassword)}
         />
@@ -185,28 +170,26 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity>
         <View>
-          <Text style={loginStyles.recovery}>Recovery Password?</Text>
+          <Text style={styles.Recovery_Password}>Recovery Password?</Text>
         </View>
       </TouchableOpacity>
       {errorMessage ? (
-        <Text style={loginStyles.errorText}>{errorMessage}</Text>
+        <Text style={styles.Error_Message}>{errorMessage}</Text>
       ) : null}
 
-      <View style={loginStyles.buttonview}>
+      <View style={styles.Sign_in_button_view}>
         <TouchableOpacity onPress={validate}>
           <View
-            style={[
-              loginStyles.view,
-            ]}>
+            style={styles.Sign_in_button}>
             {!isLoading ? (
-              <Text style={loginStyles.buttonText}>Sign in</Text>
-            ) : (
-              <ActivityIndicator size={23} color="white" />
-            )}
-          </View>
-        </TouchableOpacity>
+              <Text style={styles.Sign_in_button_Text}>Sign in</Text>
+          ) : (
+          <ActivityIndicator size={23} color="white" />
+          )}
       </View>
-    </View>
+    </TouchableOpacity>
+    </View >
+    </View >
   );
 };
 

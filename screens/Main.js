@@ -1,47 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Text, View, Dimensions } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import Swiper from 'react-native-swiper'
+import { responsiveHeight, responsiveWidth} from 'react-native-responsive-dimensions'
 import What_Doctor_says from './slides/What_Doctor_says';
-import Dummy from './slides/Dummy';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import What_Patients_Say from './slides/What_Patients_Say';
 import BlogsAndResearch from './slides/blogsAndResearch';
 import Works from './slides/work';
 
-const styles = {
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-    height: '90%'
-  },
-
-  buttonText: {
-    color: '#175CA4',
-    fontSize: 50
-  },
-
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5'
-  },
-
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9'
-  },
-
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold'
-  }
-}
 
 export default Main = ({navigation}) => {
   
@@ -79,17 +45,15 @@ export default Main = ({navigation}) => {
     <View style={{flex:1}}>
       <Swiper
         ref={swiper}
-        containerStyle={styles.wrapper}
         scrollEnabled={enable}
         pagingEnabled={true}
         index={0}
         touchReleaseOnEdges={true}
-        // touchMoveStopPropogation
         loop={false}
         dotColor='#175CA480'
         activeDotColor='#175CA4'
-        activeDotStyle={{ width: 30, bottom: height-653 }}
-        dotStyle={{bottom:height-653}}
+        activeDotStyle={{ width: responsiveWidth(9), bottom: responsiveHeight(8.5) }}
+        dotStyle={{bottom:responsiveHeight(8.5)}}
       >
         <View>
           <Works language={language} onLanguageChange={saveLanguage} navigation={navigation}/>

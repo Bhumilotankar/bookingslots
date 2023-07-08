@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import YoutubePlayer from 'react-native-youtube-iframe';
 import { Text, TouchableOpacity, View, ImageBackground, Dimensions, ScrollView, Alert } from 'react-native';
-import Swiper from 'react-native-swiper';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import slide2_style from '../../styles/slide2';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import styles from '../../styles/styles';
 
-const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
+const How_Bynocs_Work = ({ language, onLanguageChange, navigation }) => {
   const [enable, setEnable] = useState(true);
   const [APIData, setAPIData] = useState([]);
   const [showLongDesc, setShowLongDesc] = useState(false);
@@ -39,52 +37,32 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
         return (
           <View key={key}>
             <ImageBackground source={{ uri: bynocsData.en.howBynocsWork.image }} style={{ width: width, height: height, flex: 1 }} />
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10, position: 'absolute', top: 20, width: '100%', zIndex: 1 }}>
-            <TouchableOpacity onPress={() => saveLanguage('english')}>
-              <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: 10, fontSize: 20, fontFamily:'Poppins-Regular'}}>English</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => saveLanguage('french')}>
-              <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: 20, fontFamily:'Poppins-Regular'}}>French</Text>
-            </TouchableOpacity>
-          </View>
-            <View style={slide2_style.Content_view}>
+            <View style={{ flexDirection: 'row', marginLeft: responsiveWidth(74), position: 'absolute', top: responsiveHeight(3), width: width, zIndex: 1 }}>
+              <TouchableOpacity onPress={() => saveLanguage('english')}>
+                <Text style={{ color: language === 'english' ? '#175ca4' : 'black', marginRight: responsiveWidth(0.6), fontSize: responsiveFontSize(3), fontFamily: 'Poppins-Regular' }}>EN</Text>
+              </TouchableOpacity>
+              <Text style={{ color: 'black', marginRight: responsiveWidth(0.6), fontSize: responsiveFontSize(3), fontFamily: 'Poppins-Regular' }}> | </Text>
+              <TouchableOpacity onPress={() => saveLanguage('french')}>
+                <Text style={{ color: language === 'french' ? '#175ca4' : 'black', fontSize: responsiveFontSize(3), fontFamily: 'Poppins-Regular' }}>FR</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.work_Content_View}>
               {language == 'french' ? (
-                <Text style={{
-                  fontSize: 22,
-                  fontFamily: 'Poppins-Regular',
-                  color: '#175ca4',
-                  fontWeight: 'bold',
-                  lineHeight: 50,
-                  alignSelf: 'center'
-                }}>{item.fr.howBynocsWork.title}</Text>
+                <Text style={styles.work_fr_title}>{item.fr.howBynocsWork.title}</Text>
               ) : (
-                <Text style={slide2_style.Content_title}>{bynocsData.en.howBynocsWork.title}</Text>
+                <Text style={styles.work_en_title}>{bynocsData.en.howBynocsWork.title}</Text>
               )}
 
               {!showLongDesc ? (
                 language == 'english' ? (
                   <Text
-                    style={{
-                      fontSize: 15,
-                      marginLeft: 15,
-                      marginTop: 10,
-                      fontFamily: 'Poppins-Regular',
-                      color: 'black',
-                      lineHeight: 25,
-                    }}
+                    style={styles.work_en_desc}
                   >
                     {item.en.howBynocsWork.shortdesc}
                   </Text>
                 ) : (
                   <Text
-                    style={{
-                      fontSize: 15,
-                      marginLeft: 15,
-                      marginTop: 10,
-                      fontFamily: 'Poppins-Regular',
-                      color: 'black',
-                      lineHeight: 22,
-                    }}
+                    style={styles.work_fr_desc}
                   >
                     {item.fr.howBynocsWork.shortdesc}
                   </Text>
@@ -93,19 +71,9 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
               ) : (
                 language == 'english' ? (
                   <View style={{ flex: 1 }}>
-                    <ScrollView
-                      style={{
-                        marginLeft: 15,
-                        marginTop: 10,
-                      }}
-                    >
+                    <ScrollView>
                       <Text
-                        style={{
-                          fontSize: 15,
-                          fontFamily: 'Poppins-Regular',
-                          color: 'black',
-                          lineHeight: 22,
-                        }}
+                        style={styles.work_en_desc}
                       >
                         {item.en.howBynocsWork.longdesc}
                       </Text>
@@ -113,19 +81,9 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
                   </View>
                 ) : (
                   <View style={{ flex: 1 }}>
-                    <ScrollView
-                      style={{
-                        marginLeft: 15,
-                        marginTop: 10,
-                      }}
-                    >
+                    <ScrollView>
                       <Text
-                        style={{
-                          fontSize: 15,
-                          fontFamily: 'Poppins-Regular',
-                          color: 'black',
-                          lineHeight: 22,
-                        }}
+                        style={styles.work_fr_desc}
                       >
                         {item.fr.howBynocsWork.longdesc}
                       </Text>
@@ -137,26 +95,32 @@ const How_Bynocs_Work = ({ language, onLanguageChange,navigation }) => {
               <View style={{ alignItems: 'center' }}>
                 <MaterialIcons
                   name={showLongDesc ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
-                  size={34}
+                  size={responsiveHeight(5)}
                   onPress={toggleDescription}
                 />
               </View>
             </View>
-            <TouchableOpacity activeOpacity={1} style={{
-              borderRadius: 50,
-              backgroundColor: '#175ca4',
-              height: 50,
-              width: '45%',
-              justifyContent:'center',
-              alignItems:'center',
-              position: 'absolute',
-              marginTop: height - 80,
-              marginLeft: '2.5%'
-            }} onPress={()=>navigation.navigate('Login')} >
-              <Text style={slide2_style.Touchable_Text}>LOGIN</Text>
+            <TouchableOpacity
+              onPress={() => { navigation.replace('Login') }}
+              activeOpacity={1}
+              style={styles.Login_Button}
+            >
+              <Text
+                style={styles.Login_Button_Text}
+              >
+                LOGIN
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={1} style={slide2_style.Enquiry_button} onPress={()=>navigation.navigate('Enquiry')}>
-              <Text style={slide2_style.Touchable_Text}>ENQUIRY</Text>
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={() => navigation.navigate('Enquiry')}
+              style={styles.Enquiry_Button}
+            >
+              <Text
+                style={styles.Enquiry_Button_Text}
+              >
+                ENQUIRY
+              </Text>
             </TouchableOpacity>
           </View>
         );

@@ -3,7 +3,8 @@ import { View, TextInput, TouchableOpacity, Text, ScrollView, Modal, Alert, Dime
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
-import enquiry_style from '../styles/enquiry_style';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
+import styles from '../styles/styles';
 
 const Enquiry = () => {
     const [name, setName] = useState('');
@@ -80,17 +81,21 @@ const Enquiry = () => {
 
     return (
         <ScrollView contentContainerStyle={{
-            flexGrow: 1,
             backgroundColor: '#fff',
-            // paddingVertical: 20,
-            // paddingHorizontal: 16,
         }}>
-            <Text style={enquiry_style.maintext}>Enquiry Page</Text>
+            <Text style={{
+                color: '#303535',
+                fontFamily: 'Poppins-Regular',
+                fontSize: responsiveFontSize(3.5),
+                marginLeft: responsiveWidth(3),
+                marginTop: responsiveHeight(2.8),
+                marginBottom: responsiveHeight(4),
+            }}>Enquiry Page</Text>
 
-            <View style={{}}>
-                <Text style={enquiry_style.text}>Full Name</Text>
+            <View>
+                <Text style={styles.Enquiry_text}>Full Name</Text>
                 <TextInput
-                    style={enquiry_style.input}
+                    style={styles.Enquiry_textinput_a}
                     //   placeholder="Enter your name"
                     value={name}
                     onChangeText={setName}
@@ -101,25 +106,25 @@ const Enquiry = () => {
             <TouchableOpacity style={{}} onPress={() => setIsCalendarVisible(true)}>
                 <View style={{ flexDirection: 'row' }}>
                     <View>
-                        <Text style={enquiry_style.text}>Birth Date</Text>
+                        <Text style={styles.Enquiry_text}>Birth Date</Text>
                         <TextInput
-                            style={enquiry_style.inputBirth}
+                            style={styles.Enquiry_textinput_b}
                             //   placeholder="Birth Date"
                             value={birthDate}
                             editable={false}
                         />
                     </View>
-                    <View style={{ top: 9 }}>
-                        <Icon name="calendar" size={24} color="#175CA4" style={{ marginRight: 10 }} />
+                    <View style={{ top: responsiveHeight(1.6) }}>
+                        <Icon name="calendar" size={responsiveFontSize(3.5)} color="#175CA4" style={{ marginLeft: responsiveWidth(0.25) }} />
                     </View>
                 </View>
             </TouchableOpacity>
 
-            <Text style={enquiry_style.text}>Gender</Text>
+            <Text style={styles.Enquiry_text}>Gender</Text>
 
             <RadioForm formHorizontal style={{}}>
                 {genderOptions.map((option, index) => (
-                    <View key={index} style={{ marginTop: 5 }}>
+                    <View key={index} style={{ marginTop: responsiveHeight(1) }}>
                         <RadioButton labelHorizontal>
                             <RadioButtonInput
                                 obj={option}
@@ -132,7 +137,7 @@ const Enquiry = () => {
                                 buttonSize={8}
                                 buttonOuterSize={15}
                                 buttonStyle={{}}
-                                buttonWrapStyle={{ marginLeft: 20, marginRight: 5, top: 2 }}
+                                buttonWrapStyle={{ marginLeft: responsiveWidth(5), marginRight: responsiveWidth(1), top: responsiveHeight(0.4) }}
                             />
 
                             <RadioButtonLabel
@@ -140,21 +145,21 @@ const Enquiry = () => {
                                 index={index}
                                 labelHorizontal
                                 onPress={() => setGender(option.value)}
-                                labelStyle={{color:'black'}}
-                                labelWrapStyle={{ marginRight: 20}}
+                                labelStyle={{ color: 'black' }}
+                                labelWrapStyle={{ marginRight: responsiveWidth(2) }}
                             />
                         </RadioButton>
                     </View>
                 ))}
             </RadioForm>
 
-            <Text style={enquiry_style.textcontact}>Contact</Text>
+            <Text style={styles.Enquiry_text_Contact}>Contact</Text>
 
-            <View style={{ top: 15 }}>
-                <Text style={enquiry_style.textaftercontact}>Phone Number</Text>
+            <View style={{ top: responsiveHeight(2.3) }}>
+                <Text style={styles.Enquiry_text_afterContact}>Phone Number</Text>
                 <TextInput
-                    style={enquiry_style.inputaftercontact}
-                    maxLength={10}
+                    style={styles.Enquiry_textinput_afterContact}
+                    // maxLength={10}
                     //   placeholder="Enter your contact number"
                     value={contactNumber}
                     onChangeText={setContactNumber}
@@ -162,10 +167,10 @@ const Enquiry = () => {
                 />
             </View>
 
-            <View style={{ top: 15 }}>
-                <Text style={enquiry_style.textaftercontact}>Email</Text>
+            <View style={{ top: responsiveHeight(2.3) }}>
+                <Text style={styles.Enquiry_text_afterContact}>Email</Text>
                 <TextInput
-                    style={enquiry_style.inputaftercontact}
+                    style={styles.Enquiry_textinput_afterContact}
                     //   placeholder="Enter your contact number"
                     value={email}
                     onChangeText={setEmail}
@@ -173,81 +178,55 @@ const Enquiry = () => {
                 />
             </View>
 
-            <View style={{ top: 15 }}>
-                <Text style={enquiry_style.textaftercontact}>Country</Text>
+            <View style={{ top: responsiveHeight(2.3) }}>
+                <Text style={styles.Enquiry_text_afterContact}>Country</Text>
                 <TextInput
-                    style={enquiry_style.inputaftercontact}
+                    style={styles.Enquiry_textinput_afterContact}
                     //   placeholder="Enter your contact number"
                     value={country}
                     onChangeText={setCountry}
                 />
             </View>
 
-            <View style={{ top: 15 }}>
-                <Text style={enquiry_style.textaftercontact}>City</Text>
+            <View style={{ top: responsiveHeight(2.3) }}>
+                <Text style={styles.Enquiry_text_afterContact}>City</Text>
                 <TextInput
-                    style={enquiry_style.inputaftercontact}
+                    style={styles.Enquiry_textinput_afterContact}
                     //   placeholder="Enter your contact number"
                     value={city}
                     onChangeText={setCity}
                 />
             </View>
 
-            <View style={{ top: 15 }}>
-                <Text style={enquiry_style.textaftercontact}>Comments</Text>
+            <View style={{ top: responsiveHeight(2.3) }}>
+                <Text style={styles.Enquiry_text_afterContact}>Comments</Text>
                 <TextInput
-                    style={enquiry_style.inputaftercontact}
+                    style={styles.Enquiry_textinput_afterContact}
                     //   placeholder="Enter your contact number"
+                    multiline
+                    // numberOfLines={4}
                     value={comments}
                     onChangeText={setComments}
                 />
             </View>
-
-
-            {/* <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your country"
-          value={country}
-          onChangeText={setCountry}
-        />
-      </View>
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your city"
-          value={city}
-          onChangeText={setCity}
-        />
-      </View>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your comments"
-        value={comments}
-        onChangeText={setComments}
-        multiline
-        numberOfLines={4}
-      /> */}
-            <View style={{paddingLeft:20, paddingRight:20}}>
-                <TouchableOpacity style={enquiry_style.touchableOpacity} onPress={handleSubmission}>
-                    <Text style={enquiry_style.buttonText}>Submit</Text>
+            <View style={{ paddingLeft: responsiveWidth(5), paddingRight: responsiveWidth(5) }}>
+                <TouchableOpacity style={styles.Submit_Button} onPress={handleSubmission}>
+                    <Text style={styles.Submit_Button_Text}>Submit</Text>
                 </TouchableOpacity>
             </View>
 
             <Modal visible={isCalendarVisible} animationType="slide">
-                <View style={enquiry_style.calendarContainer}>
-                    <View style={enquiry_style.calendarHeader}>
-                        <Text style={enquiry_style.calendarHeaderText}>Select Date</Text>
+                <View style={styles.Calendar_Container}>
+                    <View style={styles.Calendar_Header}>
+                        <Text style={styles.Calendar_Header_Text}>Select Date</Text>
                         <TouchableOpacity onPress={() => setIsCalendarVisible(false)}>
-                            <Icon name="close" size={24} color="white" style={enquiry_style.closeIcon} />
+                            <Icon name="close" size={24} color="white" style={styles.CloseIcon} />
                         </TouchableOpacity>
                     </View>
-                    <Calendar onDayPress={handleDateSelect}/>
+                    <Calendar onDayPress={handleDateSelect} />
                 </View>
             </Modal>
-        </ScrollView>
+        </ScrollView >
     );
 };
 
