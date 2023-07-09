@@ -12,7 +12,8 @@ import Enquiry from './screens/Enquiry';
 import Home from './screens/homePage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const stack = createNativeStackNavigator()
-const homeStack=createNativeStackNavigator();
+
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
@@ -59,48 +60,24 @@ const App = () => {
       )}
     </View>)
   }
-const HomeStackScreen = () => {
-  return (
-    <homeStack.Navigator>
-      <homeStack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerShown: false,
-        }}
-      />
-      </homeStack.Navigator>
-  )
-      }
 
   return (
     <NavigationContainer>
           <stack.Navigator>
             <stack.Group>
-            {isLoggedIn ? (
             <stack.Screen
-              component={HomeStackScreen}
-              name="Home"
+              component={isLoggedIn?Home:MainEntry}
+              name={isLoggedIn ? "Home": "MainEntry"}
               options={{
                 headerShown: false,
               }}
             />
-          ) : (
-            <stack.Screen
-              component={MainEntry}
-              name="MainEntry"
-              options={{
-                headerShown: false,
-              }}
-            />
-          )}
             <stack.Screen component={Login} name="Login" options={{
               headerShown:true
             }}/>
             <stack.Screen component={Enquiry} name="Enquiry" options={{
               headerShown:true
             }}/>
-            <stack.Screen component={HomeStackScreen} name='Home T'options={{headerShown:false}}/>
             </stack.Group>
           </stack.Navigator>
     </NavigationContainer>
