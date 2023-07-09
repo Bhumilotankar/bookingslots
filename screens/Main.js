@@ -7,10 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import What_Patients_Say from './slides/What_Patients_Say';
 import BlogsAndResearch from './slides/blogsAndResearch';
 import Works from './slides/work';
-
-
 export default Main = ({navigation}) => {
-  
   const swiper = useRef(null)
   const [enable, setEnable] = useState(true);
   const [language, setLanguage] = useState('english');

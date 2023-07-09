@@ -10,17 +10,27 @@ import How_Bynocs_Work from './screens/slides/work';
 import Login from './screens/slides/Login';
 import Enquiry from './screens/Enquiry';
 import Home from './screens/homePage';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const stack = createNativeStackNavigator()
-
-
+const homeStack=createNativeStackNavigator();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   useEffect(() => {
     fetchData();
+    checkLoginStatus();
   }, []);
 
+  const checkLoginStatus = async () => {
+    try {
+      const status = await AsyncStorage.getItem('loggedIn');
+      if (status === 'true') {
+        setIsLoggedIn(true);
+      }
+    } catch (error) {
+      console.log('Error checking login status:', error);
+    }
+  };
   const fetchData = async () => {
     try {
       // Fetch data here
@@ -49,37 +59,52 @@ const App = () => {
       )}
     </View>)
   }
+const HomeStackScreen = () => {
+  return (
+    <homeStack.Navigator>
+      <homeStack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+      </homeStack.Navigator>
+  )
+      }
 
   return (
     <NavigationContainer>
           <stack.Navigator>
             <stack.Group>
-            <stack.Screen component={MainEntry} name="MainEntry" options={{
-              headerShown:false
-            }}/>
-            <stack.Screen component={What_Doctor_says} name="What_Doctor_says" options={{
-              headerShown:false
-            }}/>
-            <stack.Screen component={What_Patients_says} name="What_Patients_says" options={{
-              headerShown:false
-            }}/>
-            <stack.Screen component={How_Bynocs_Work} name="How_Bynocs_Work" options={{
-              headerShown:false
-            }}/>
+            {isLoggedIn ? (
+            <stack.Screen
+              component={HomeStackScreen}
+              name="Home"
+              options={{
+                headerShown: false,
+              }}
+            />
+          ) : (
+            <stack.Screen
+              component={MainEntry}
+              name="MainEntry"
+              options={{
+                headerShown: false,
+              }}
+            />
+          )}
             <stack.Screen component={Login} name="Login" options={{
               headerShown:true
             }}/>
             <stack.Screen component={Enquiry} name="Enquiry" options={{
               headerShown:true
             }}/>
-            <stack.Screen component={Home} name="Home" options={{
-              headerShown:false
-            }}/>
+            <stack.Screen component={HomeStackScreen} name='Home T'options={{headerShown:false}}/>
             </stack.Group>
           </stack.Navigator>
     </NavigationContainer>
   )
-
 };
 
 export default App;
