@@ -12,6 +12,7 @@ import Enquiry from './screens/Enquiry';
 import Home from './screens/homePage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomNavTabs from './screens/bottomNavigation';
+import Notifications from './screens/notifications';
 const stack = createNativeStackNavigator();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +64,7 @@ const App = () => {
           <stack.Navigator>
             <stack.Group>
             <stack.Screen
-              component={!isLoggedIn?MainEntry:BottomNavTabs}
+              component={!isLoggedIn ? MainEntry : BottomNavTabs}
               name={!isLoggedIn ? "MainEntry":"Home"}
               options={{
                 headerShown: false,
@@ -82,9 +83,9 @@ const App = () => {
             <stack.Screen component={Enquiry} name="Enquiry" options={{
               headerShown:true
             }}/>
-            {/* <stack.Screen component={Home} name="Home" options={{
-              headerShown:false
-            }}/> */}
+            <stack.Screen component={Notifications} name="Notifications" options={{
+              headerShown:true
+            }}/>
             </stack.Group>
           </stack.Navigator>
     </NavigationContainer>

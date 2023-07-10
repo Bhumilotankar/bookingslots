@@ -183,7 +183,7 @@ const { height, width } = Dimensions.get('window');
         </View>
       ))}
       <TouchableOpacity
-        onPress={() => { navigation.replace('Login') }}
+        onPress={() => { navigation.navigate('Login') }}
         activeOpacity={1}
         style={{
           borderRadius: 50,

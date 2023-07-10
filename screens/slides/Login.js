@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {View,Text,ActivityIndicator,TextInput,TouchableOpacity,Alert,} from 'react-native';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
@@ -110,7 +109,7 @@ const Login = ({ navigation }) => {
           fontSize: responsiveFontSize(2.5),
           marginLeft: responsiveWidth(4.5),
           marginTop: responsiveHeight(7),
-        }}>Register Now to Start</Text>
+        }}> Login Now to Start</Text>
       </View>
       <Text style={styles.Login_Parameter_Text}>Your Email</Text>
       <View

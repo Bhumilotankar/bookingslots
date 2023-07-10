@@ -142,7 +142,7 @@ const What_Doctor_says = ({ language, onLanguageChange, navigation }) => {
               </View>
             </View>
             <TouchableOpacity
-              onPress={() => { navigation.replace('Login') }}
+              onPress={() => { navigation.navigate('Login') }}
               activeOpacity={1}
               style={styles.Login_Button}
             >

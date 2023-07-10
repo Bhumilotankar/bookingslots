@@ -9,16 +9,13 @@ const Book_Appointment = () => {
     APIgetData();
   })
 
-  console.log('data');
+  //console.log('data');
   const APIgetData = async () => {
     const response = await fetch('https://www.myjsons.com/v/e56b1373');
     const jsonData = await response.json();
-    setAPIData(jsonData.items);
-    if(APIData){
-      console.log("printed");
-    }
+    setAPIData(jsonData.timeslots);
+    console.log(APIData)
   };
-
 const [onSelectDate, setOnselectDate]=useState('')
   return (
     <View>

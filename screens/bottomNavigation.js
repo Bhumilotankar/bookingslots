@@ -128,7 +128,7 @@ const CustomTabBarButton = ({ iconName, onPress, isFocused }) => (
                     </View>
                 )}
             >
-                <Tab.Screen name="Home" component={Home} />
+                <Tab.Screen name="Home" component={Home} options={{headerShown:false}}/>
                 <Tab.Screen name="Chat" component={Chat} />
                 <Tab.Screen name="Book_Appointment" component={Book_Appointment} />
                 <Tab.Screen name="Report" component={Settings} />

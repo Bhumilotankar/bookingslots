@@ -101,7 +101,7 @@ const How_Bynocs_Work = ({ language, onLanguageChange, navigation }) => {
               </View>
             </View>
             <TouchableOpacity
-              onPress={() => { navigation.replace('Login') }}
+              onPress={() => { navigation.navigate('Login') }}
               activeOpacity={1}
               style={styles.Login_Button}
             >

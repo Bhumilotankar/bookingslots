@@ -1,52 +1,15 @@
-import {Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity,BackHandler,Alert} from 'react-native';
 import {useEffect, useState} from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-const CustomTabBarButton = ({ iconName, onPress, isFocused }) => (
-  <View
-  style={{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 5, // Move the container slightly down
-  }}
->
-  <TouchableOpacity
-    style={{
-      width: 40,
-      height: 40,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: isFocused ? '#175CA4' : 'transparent',
-      borderRadius: 8,
-      borderWidth: 5,
-      borderColor: 'transparent',
-      elevation: isFocused ? 15 : 0,
-      shadowColor: '#f83287',
-      shadowOpacity: isFocused ? 1 : 0,
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowRadius: 1,
-      marginTop: 5, // Move the button slightly down
-    }}
-    onPress={onPress}
-  >
-    <Icon name={iconName} size={25} color={isFocused ? 'white' : '#D3D3D3'} />
-  </TouchableOpacity>
-</View>
-
-
-);
-
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
+import Activity from 'react-native-vector-icons/MaterialCommunityIcons'
+import Back from 'react-native-vector-icons/MaterialIcons'
 const Home = ({navigation}) => {
 
   const [userName, setUserName] = useState('');
 
-    function monthIndexToMonth(date){
+    {/*function monthIndexToMonth(date){
         console.log("HELPER CLALLED");
     return date.toLocaleString('en-US', {
       month: 'long',
@@ -60,15 +23,20 @@ const Home = ({navigation}) => {
     var year = new Date().getFullYear();
     var hours = new Date().getHours(); 
     var min = new Date().getMinutes(); 
-    var sec = new Date().getSeconds();
+var sec = new Date().getSeconds();*/}
     async function fetchUsername() {
       uname = await AsyncStorage.getItem('loggedIn');
-      setUsername(uname);
+      setUserName(uname);
     }
   
     useEffect(() => {
       fetchUsername();
       retrieveUserName();
+      BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+  
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
+      };
     }, []);
     async function Logout(){
       await AsyncStorage.clear()
@@ -86,32 +54,106 @@ const Home = ({navigation}) => {
         console.error('Error retrieving userName from AsyncStorage:', error);
       }
     };
+    const handleBackPress = () => {
+            BackHandler.exitApp();
+      return true;
+    };
 
     return (
       <View>
-        
-        <View
-          style={{
-            flexDirection: 'row',
-            margin: 20,
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
+        <TouchableOpacity onPress={handleBackPress}>
+        <Back name='arrow-back-ios' size={30} style={{marginLeft:responsiveWidth(2)}}/>
+        </TouchableOpacity>
+          {/*<Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
             Thursday {date}, {monthIndexToMonth(month)} 2022
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Icon
-              name="bell-o"
-              color={'black'}
-              size={23}
-              style={{marginRight: 20}}
-            />
-            <TouchableOpacity onPress={Logout}>
-            <Icon name="user-o" color={'black'} size={23} />
-            </TouchableOpacity>
-          </View>
+        </Text>*/}
+
+    <View style={{flexDirection:'row'}}>
+      <View style={{ marginLeft: responsiveWidth(5),marginTop:responsiveHeight(1.8)}}>
+        <Text style={{ fontSize: responsiveFontSize(2), color: '#9e9e9e' }}>Welcome</Text>
+        <Text style={{ fontSize: responsiveFontSize(3), color: '#1c1d23' }}>{userName}</Text>
+      </View>
+      <View style={{ flexDirection: 'row',marginTop:responsiveHeight(1.8),marginLeft:responsiveWidth(35)}}>
+        <TouchableOpacity onPress={Logout}>
+          <Icon name="person-circle" color={'#9E9E9E'} size={70} />
+        </TouchableOpacity>
         </View>
+        <View style={{ flexDirection: 'row',marginTop:responsiveHeight(5),marginLeft:responsiveWidth(2)}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
+          <Icon
+            name="notifications"
+            color={'#9E9E9E'}
+            size={25}
+          />
+        </TouchableOpacity>
+        </View>
+    </View>
+    <View
+    style={{borderRadius: 8,
+      backgroundColor: "#175ca4",
+      width: responsiveWidth(90),
+      height: responsiveHeight(10),
+      marginLeft:responsiveWidth(5),
+      flexDirection:'row',
+      marginTop:responsiveHeight(2)
+    }}
+    >
+            <Activity
+            name="chart-line-stacked"
+            color={'#ffffff'}
+            size={25}
+            style={{marginTop:responsiveHeight(3.2),marginLeft:responsiveWidth(3)}}
+          />
+      <Text style={{marginTop:responsiveHeight(2.5),marginLeft:responsiveWidth(2),color:'#fff',fontSize:responsiveFontSize(3),fontFamily:'Poppins-Regular'}}>Eligibility Check</Text>
+      <TouchableOpacity
+        style={{
+          borderRadius: 50,
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          height: responsiveHeight(4),
+          width: responsiveWidth(22),
+          marginTop: responsiveHeight(3),
+          marginLeft: responsiveWidth(5),
+        }}
+      >
+        <Text 
+        style={{fontSize:responsiveFontSize(1.5),color:'#fff',marginLeft:responsiveWidth(3),marginTop:responsiveHeight(0.8)}}>
+          Check now
+        </Text>
+        </TouchableOpacity>
+      </View>
+    <View
+    style={{borderRadius: 8,
+      backgroundColor: "#ffaf39",
+      width: responsiveWidth(90),
+      height: responsiveHeight(10),
+      marginLeft:responsiveWidth(5),
+      flexDirection:'row',
+      marginTop:responsiveHeight(2)
+    }}
+    >
+            <Activity
+            name="calendar-month"
+            color={'#ffffff'}
+            size={25}
+            style={{marginTop:responsiveHeight(3.2),marginLeft:responsiveWidth(3)}}
+          />
+      <Text style={{marginTop:responsiveHeight(2.5),marginLeft:responsiveWidth(2),color:'#fff',fontSize:responsiveFontSize(3.2),fontFamily:'Poppins-Regular'}}>Appointments</Text>
+      <TouchableOpacity
+        style={{
+          borderRadius: 50,
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          height: responsiveHeight(4),
+          width: responsiveWidth(22),
+          marginTop: responsiveHeight(3),
+          marginLeft: responsiveWidth(3),
+        }}
+      >
+        <Text 
+        style={{fontSize:responsiveFontSize(1.8),color:'#fff',marginLeft:responsiveWidth(3),marginTop:responsiveHeight(0.8)}}>
+          See more
+        </Text>
+        </TouchableOpacity>
+      </View>
   
        {/*} <View style={{margin: 20}}>
           <Text style={{fontSize: 30, fontWeight: 'bold', color: 'black'}}>
@@ -122,7 +164,7 @@ const Home = ({navigation}) => {
           </Text>
         </View>*/}
   
-        <View
+        {/*<View
           style={{
             flexDirection: 'row',
             marginHorizontal: 25,
@@ -191,7 +233,7 @@ const Home = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Text>{userName}</Text>
+          */}
       </View>
     );
   };

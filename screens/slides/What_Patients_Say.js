@@ -117,7 +117,7 @@ const What_Patients_says = ({ language, onLanguageChange, navigation }) => {
               </ScrollView>
             </View>
             <TouchableOpacity
-              onPress={() => { navigation.replace('Login') }}
+              onPress={() => { navigation.navigate('Login') }}
               activeOpacity={1}
               style={styles.Login_Button}
             >
