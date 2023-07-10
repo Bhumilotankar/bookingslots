@@ -64,6 +64,8 @@ const Login = ({ navigation }) => {
       if (user) {
         if (bcrypt.compareSync(password, user.password)) {
           await AsyncStorage.setItem('loggedIn', 'true');
+          await AsyncStorage.setItem('UserName', user.username);
+          console.log(user.username);
           setTimeout(() => {
             setIsLoading(false);
             navigation.replace('Home');

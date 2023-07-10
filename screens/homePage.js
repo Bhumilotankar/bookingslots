@@ -6,6 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({navigation}) => {
 
+  const [userName, setUserName] = useState('');
+
     function monthIndexToMonth(date){
         console.log("HELPER CLALLED");
     return date.toLocaleString('en-US', {
@@ -28,11 +30,25 @@ const Home = ({navigation}) => {
   
     useEffect(() => {
       fetchUsername();
+      retrieveUserName();
     }, []);
     async function Logout(){
       await AsyncStorage.clear()
       navigation.replace('Login')
     }
+
+    const retrieveUserName = async () => {
+      try {
+        const storedUserName = await AsyncStorage.getItem('UserName');
+        console.log(storedUserName);
+        if (storedUserName) {
+          setUserName(storedUserName);
+        }
+      } catch (error) {
+        console.error('Error retrieving userName from AsyncStorage:', error);
+      }
+    };
+
     return (
       <View>
         
@@ -137,7 +153,7 @@ const Home = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-  
+        <Text>{userName}</Text>
       </View>
     );
   };

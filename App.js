@@ -66,18 +66,28 @@ const App = () => {
           <stack.Navigator>
             <stack.Group>
             <stack.Screen
-              component={isLoggedIn?Home:MainEntry}
-              name={isLoggedIn ? "Home": "MainEntry"}
+              component={!isLoggedIn?MainEntry:Home}
+              name={!isLoggedIn ? "MainEntry":"Home"}
               options={{
                 headerShown: false,
               }}
             />
+            {isLoggedIn?(
+              null
+            ):(
+              <stack.Screen component={Home} name="Home" options={{
+                headerShown:false
+              }}/>
+            )}
             <stack.Screen component={Login} name="Login" options={{
               headerShown:true
             }}/>
             <stack.Screen component={Enquiry} name="Enquiry" options={{
               headerShown:true
             }}/>
+            {/* <stack.Screen component={Home} name="Home" options={{
+              headerShown:false
+            }}/> */}
             </stack.Group>
           </stack.Navigator>
     </NavigationContainer>
