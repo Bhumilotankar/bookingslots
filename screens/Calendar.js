@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions'
 import moment from 'moment'
 import Date from './Date'
 
@@ -39,9 +40,9 @@ const Calendar = ({ onSelectDate, selected }) => {
 
   return (
     <>
-      <View style={styles.centered}>
+      {/* <View style={styles.centered}>
         <Text style={styles.title}>{currentMonth}</Text>
-      </View>
+      </View> */}
       <View style={styles.dateSection}>
         <View style={styles.scroll}>
           <ScrollView
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2.8),
     fontWeight: 'bold',
     color:'black'
   },

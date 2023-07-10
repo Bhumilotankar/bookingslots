@@ -67,7 +67,7 @@ const Login = ({ navigation }) => {
           console.log(user.username);
           setTimeout(() => {
             setIsLoading(false);
-            navigation.replace('Home');
+            navigation.replace('BottomNavTabs');
           }, 1000);
         } else {
           Alert.alert('Error', 'Invalid password!');
@@ -93,7 +93,7 @@ const Login = ({ navigation }) => {
     try {
       const isLoggedIn = await AsyncStorage.getItem('loggedIn');
       if (isLoggedIn === 'true') {
-        navigation.replace('Home');
+        navigation.replace('BottomNavTabs');
       }
     } catch (error) {
       console.log('Error:', error);

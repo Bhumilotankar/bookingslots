@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import moment from 'moment'
+import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions'
 
 const Date = ({ date, onSelectDate, selected }) => {
   
@@ -17,7 +18,7 @@ const Date = ({ date, onSelectDate, selected }) => {
   return (
     <TouchableOpacity
       onPress={() => onSelectDate(fullDate)}
-      style={[styles.card, selected === fullDate && { backgroundColor: "#346EE9" }]}
+      style={[styles.card, selected === fullDate && { backgroundColor: "#175CA4" }]}
     >
       <Text
         style={[styles.big, selected === fullDate && { color: "#fff" }]}
@@ -28,7 +29,7 @@ const Date = ({ date, onSelectDate, selected }) => {
       <Text
         style={[
           styles.medium,
-          selected === fullDate && { color: "#fff", fontWeight: 'bold', fontSize: 24 },
+          selected === fullDate && { color: "#fff", fontWeight: 'bold', fontSize: responsiveFontSize(2.8)},
         ]}
       >
         {dayNumber}
@@ -41,23 +42,23 @@ export default Date
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#eee',
-    borderRadius: 10,
+    backgroundColor: 'white',
+    // borderRadius: 20,
     borderColor: '#ddd',
     padding: 10,
     // marginVertical: 2,
     alignItems: 'center',
-    height: 90,
-    width: 80,
+    height: responsiveHeight(15),
+    width: responsiveWidth(23),
     marginHorizontal: 5,
   },
   big: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: responsiveFontSize(2.8),
     color:'black'
   },
   medium: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(2.8),
     color:'black'
   },
 })

@@ -81,7 +81,7 @@ const CustomTabBarButton = ({ iconName, onPress, isFocused }) => (
     // </BottomTab.Navigator>
     // <NavigationContainer>
             <Tab.Navigator
-                tabBarOptions={{
+                screenOptions={{
                     showLabel: false, // Hide the label of the active tab
                     style: {
                         borderTopWidth: 0,
@@ -106,7 +106,7 @@ const CustomTabBarButton = ({ iconName, onPress, isFocused }) => (
                             isFocused={props.state.index === 0}
                         />
                         <CustomTabBarButton
-                            onPress={() => props.navigation.navigate('Second')}
+                            onPress={() => props.navigation.navigate('Chat')}
                             iconName="commenting-o"
                             isFocused={props.state.index === 1}
                         />
@@ -130,7 +130,7 @@ const CustomTabBarButton = ({ iconName, onPress, isFocused }) => (
             >
                 <Tab.Screen name="Home" component={Home} options={{headerShown:false}}/>
                 <Tab.Screen name="Chat" component={Chat} />
-                <Tab.Screen name="Book_Appointment" component={Book_Appointment} />
+                <Tab.Screen name="Book_Appointment" component={Book_Appointment} options={{headerShown:false}} />
                 <Tab.Screen name="Report" component={Settings} />
                 <Tab.Screen name="More" component={More} />
             </Tab.Navigator>

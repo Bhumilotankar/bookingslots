@@ -65,7 +65,7 @@ const App = () => {
             <stack.Group>
             <stack.Screen
               component={!isLoggedIn ? MainEntry : BottomNavTabs}
-              name={!isLoggedIn ? "MainEntry":"Home"}
+              name={!isLoggedIn ? "MainEntry":"BottomNavTabs"}
               options={{
                 headerShown: false,
               }}
@@ -73,7 +73,7 @@ const App = () => {
             {isLoggedIn?(
               null
             ):(
-              <stack.Screen component={BottomNavTabs} name="Home" options={{
+              <stack.Screen component={BottomNavTabs} name="BottomNavTabs" options={{
                 headerShown:false
               }}/>
             )}
