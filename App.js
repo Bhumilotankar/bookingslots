@@ -11,9 +11,8 @@ import Login from './screens/slides/Login';
 import Enquiry from './screens/Enquiry';
 import Home from './screens/homePage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const stack = createNativeStackNavigator()
-
-
+import BottomNavTabs from './screens/bottomNavigation';
+const stack = createNativeStackNavigator();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
@@ -34,9 +33,7 @@ const App = () => {
   };
   const fetchData = async () => {
     try {
-      // Fetch data here
-      // Set isLoading to false once data is fetched
-      // For demonstration purposes, using setTimeout to simulate data fetching delay
+
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
@@ -66,7 +63,7 @@ const App = () => {
           <stack.Navigator>
             <stack.Group>
             <stack.Screen
-              component={!isLoggedIn?MainEntry:Home}
+              component={!isLoggedIn?MainEntry:BottomNavTabs}
               name={!isLoggedIn ? "MainEntry":"Home"}
               options={{
                 headerShown: false,
@@ -75,7 +72,7 @@ const App = () => {
             {isLoggedIn?(
               null
             ):(
-              <stack.Screen component={Home} name="Home" options={{
+              <stack.Screen component={BottomNavTabs} name="Home" options={{
                 headerShown:false
               }}/>
             )}

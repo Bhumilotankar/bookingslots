@@ -4,6 +4,44 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+const CustomTabBarButton = ({ iconName, onPress, isFocused }) => (
+  <View
+  style={{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5, // Move the container slightly down
+  }}
+>
+  <TouchableOpacity
+    style={{
+      width: 40,
+      height: 40,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: isFocused ? '#175CA4' : 'transparent',
+      borderRadius: 8,
+      borderWidth: 5,
+      borderColor: 'transparent',
+      elevation: isFocused ? 15 : 0,
+      shadowColor: '#f83287',
+      shadowOpacity: isFocused ? 1 : 0,
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowRadius: 1,
+      marginTop: 5, // Move the button slightly down
+    }}
+    onPress={onPress}
+  >
+    <Icon name={iconName} size={25} color={isFocused ? 'white' : '#D3D3D3'} />
+  </TouchableOpacity>
+</View>
+
+
+);
+
 const Home = ({navigation}) => {
 
   const [userName, setUserName] = useState('');
