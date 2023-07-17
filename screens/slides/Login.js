@@ -54,7 +54,7 @@ const Login = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-
+      
       const response = await fetch('https://www.myjsons.com/v/1ee31319');
       const jsonData = await response.json();
 
@@ -64,6 +64,7 @@ const Login = ({ navigation }) => {
         if (bcrypt.compareSync(password, user.password)) {
           await AsyncStorage.setItem('loggedIn', 'true');
           await AsyncStorage.setItem('UserName', user.username);
+          await AsyncStorage.setItem('Email', email);
           console.log(user.username);
           setTimeout(() => {
             setIsLoading(false);

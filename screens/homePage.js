@@ -1,4 +1,4 @@
-import {Text, View, TouchableOpacity,BackHandler,Alert} from 'react-native';
+import {Image, Text, View, TouchableOpacity,BackHandler,Alert} from 'react-native';
 import {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -6,7 +6,8 @@ import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-nat
 import Activity from 'react-native-vector-icons/MaterialCommunityIcons'
 import Back from 'react-native-vector-icons/MaterialIcons'
 const Home = ({navigation}) => {
-
+  const [appointments, setAppointments] = useState([]);
+  const [email,setEmail]=useState('');
   const [userName, setUserName] = useState('');
 
     {/*function monthIndexToMonth(date){
@@ -24,14 +25,16 @@ const Home = ({navigation}) => {
     var hours = new Date().getHours(); 
     var min = new Date().getMinutes(); 
 var sec = new Date().getSeconds();*/}
-    async function fetchUsername() {
+    async function fetchData() {
       uname = await AsyncStorage.getItem('loggedIn');
       setUserName(uname);
     }
   
+
     useEffect(() => {
-      fetchUsername();
+      fetchData();
       retrieveUserName();
+      fetchAppointments();
       BackHandler.addEventListener('hardwareBackPress', handleBackPress);
   
       return () => {
@@ -59,7 +62,32 @@ var sec = new Date().getSeconds();*/}
       return true;
     };
 
+    const fetchAppointments = async () => {
+      try {
+        const response = await fetch(`https://retoolapi.dev/SQjura/saving`);
+        const jsonData = await response.json();
+        setAppointments(jsonData);
+        console.log(jsonData)
+      } catch (error) {
+        console.error('Error fetching appointments:', error);
+      }
+    };
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    
+      return date.toLocaleDateString('en-IN', options);
+    }
+    
+    // const inputDate = selectedDate;
+    // const formattedDate = formatDate(inputDate);
+    
+    // console.log(formattedDate);
+
     return (
+
+      
       <View>
         <TouchableOpacity onPress={handleBackPress}>
         <Back name='arrow-back-ios' size={30} style={{marginLeft:responsiveWidth(2)}}/>
@@ -67,6 +95,7 @@ var sec = new Date().getSeconds();*/}
           {/*<Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
             Thursday {date}, {monthIndexToMonth(month)} 2022
         </Text>*/}
+
 
     <View style={{flexDirection:'row'}}>
       <View style={{ marginLeft: responsiveWidth(5),marginTop:responsiveHeight(1.8)}}>
@@ -154,6 +183,39 @@ var sec = new Date().getSeconds();*/}
         </Text>
         </TouchableOpacity>
       </View>
+
+      <View  >
+      {/* Render the appointments list */}
+      
+      {appointments && appointments.length > 0 ? (
+      
+        appointments.map((appointment, index) => (
+          <View key={index} style={{marginTop:20,marginHorizontal:20,borderWidth:0.5,borderRadius:8,borderColor:'#175CA4',backgroundColor:'white',
+          // shadowColor: '#171717',
+          // shadowOffset: {width: -2, height: 4},
+          // shadowOpacity: 0.2,
+          // shadowRadius: 3,
+          elevation:16}}>
+           <View style={{marginHorizontal:20,marginVertical:10,}}>
+            <Text style={{color:'#175CA4',fontFamily:'Poppins-Bold'}}>Date: {formatDate(appointment.appointmentDate)}</Text>
+            <Text style={{color:'#175CA4',fontFamily:'Poppins-Regular'}}>Time: {appointment.time}</Text>
+            <Text style={{color:'#175CA4',fontFamily:'Poppins-Regular'}}>Category: {appointment.category}</Text>
+          </View>
+          </View>
+
+     
+        ))
+      )
+      : (
+        <View style={{flexDirection:'row', marginTop:20,marginHorizontal:20,justifyContent:'space-between'}}>
+          <View style={{width:'50%',justifyContent:'center'}}>
+             <Text numberOfLines={3} ellipsizeMode='tail' style={{color:'grey',fontFamily:'Poppins-Regular',fontSize:20,marginLeft:10}}>No Appointments Available</Text> 
+             </View>
+        <Image source={require('../assets/doctor.png')} style={{marginRight:10,width:140,height:150}}/>
+        </View>
+      )}
+    </View>
+
   
        {/*} <View style={{margin: 20}}>
           <Text style={{fontSize: 30, fontWeight: 'bold', color: 'black'}}>
