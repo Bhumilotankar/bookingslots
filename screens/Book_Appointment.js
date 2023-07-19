@@ -29,14 +29,10 @@ const Book_Appointment = () => {
   const [morningData, setMorningData] = useState([]);
   const [dayData, setDayData] = useState([]);
   const [nightData, setNightData] = useState([]);
-
-  const [morningData1, setMorningData1] = useState([]);
-  const [dayData1, setDayData1] = useState([]);
-  const [nightData1, setNightData1] = useState([]);
-
+   
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [categoryData, setCategoryData] = useState([]);
-  const [selectedCategory, onSelectCategory] = useState(null);
+  const [selectedCategory, onSelectCategory] = useState([]);
   const [selectedDate, setDate] = useState('');
   let username = '';
   let email = '';
@@ -117,6 +113,10 @@ const Book_Appointment = () => {
     setCategoryData(categoryJsonData.details);
 
     // TIMESLOTS
+    // const response = await fetch(`YOUR_TIMESLOTS_API_ENDPOINT_URL?category=${category.title}`);
+    // const data = await response.json();
+    // setTimeSlots(data);
+    
     const timeSlotResponse = await fetch('https://www.myjsons.com/v/e56b1373');
     const timeSlotjsonData = await timeSlotResponse.json();
     //   setAPIData1(jsonData.timeslots);
@@ -133,12 +133,12 @@ const Book_Appointment = () => {
 
   };
 
- function categoryfun(e){
-  console.log(e);
- }
+//  function categoryfun(e){
+//     // onSelectCategory(e); 
+//   }
  
   useEffect(() => {
-    console.log('fdff');
+
     fetchAPIData();
   }, []);
 
@@ -190,7 +190,7 @@ const Book_Appointment = () => {
               return (
                 <TouchableOpacity
                   key={index}
-                  onPress={ categoryfun(element.category)}>
+                  onPress={() => onSelectCategory(element.category)}>
                   <View
                     style={[
                       {

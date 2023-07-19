@@ -1,5 +1,5 @@
 import {Image, Text, View, TouchableOpacity,BackHandler,Alert} from 'react-native';
-import {useEffect, useState} from 'react';
+import {useEffect, useState,useCallback} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
@@ -9,6 +9,7 @@ const Home = ({navigation}) => {
   const [appointments, setAppointments] = useState([]);
   const [email,setEmail]=useState('');
   const [userName, setUserName] = useState('');
+   let Email='';
 
     {/*function monthIndexToMonth(date){
         console.log("HELPER CLALLED");
@@ -24,15 +25,16 @@ const Home = ({navigation}) => {
     var year = new Date().getFullYear();
     var hours = new Date().getHours(); 
     var min = new Date().getMinutes(); 
-var sec = new Date().getSeconds();*/}
-    async function fetchData() {
-      uname = await AsyncStorage.getItem('loggedIn');
-      setUserName(uname);
-    }
+    var sec = new Date().getSeconds();*/}
+   async function fetchData() {
+    uname = await AsyncStorage.getItem('loggedIn');
+    setUserName(uname);
+    Email = await AsyncStorage.getItem('Email');
+    setEmail(Email);
+  }
   
 
     useEffect(() => {
-      fetchData();
       retrieveUserName();
       fetchAppointments();
       BackHandler.addEventListener('hardwareBackPress', handleBackPress);
@@ -41,12 +43,14 @@ var sec = new Date().getSeconds();*/}
         BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
       };
     }, []);
+
     async function Logout(){
       await AsyncStorage.clear()
       navigation.replace('Login')
     }
 
     const retrieveUserName = async () => {
+       await   fetchData();
       try {
         const storedUserName = await AsyncStorage.getItem('UserName');
         console.log(storedUserName);
@@ -64,7 +68,10 @@ var sec = new Date().getSeconds();*/}
 
     const fetchAppointments = async () => {
       try {
-        const response = await fetch(`https://retoolapi.dev/SQjura/saving`);
+        console.log(email);
+        const url= 'https://retoolapi.dev/SQjura/saving/?email='+ email;
+        console.log(url);
+        const response = await fetch(url);
         const jsonData = await response.json();
         setAppointments(jsonData);
         console.log(jsonData)
